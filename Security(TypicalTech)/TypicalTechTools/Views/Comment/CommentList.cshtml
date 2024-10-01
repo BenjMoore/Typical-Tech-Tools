@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TypicalTechTools.Models.Comment>
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "CommentList";
+
+    int productCode = 0;
+}
+
+
+@if (TempData["AlertMessage"] != null)
+{
+    <script type="text/javascript">
+        alert('@TempData["AlertMessage"]');
+    </script>
+}
+
+<h1>Comments for Product</h1>
+
+
+
+
+<p>
+    @Html.ActionLink("Add a new Comment", "AddComment", "Comment", new { productCode = @productCode })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CommentText)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @Html.HiddenFor(modelItem => item.CommentId)
+                @Html.HiddenFor(modelItem => item.ProductCode)
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentText)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditComment", new { commentId = item.CommentId }, new { @class = "btn btn-primary ml-1" })
+                   <form asp-action="RemoveComment" method="post" style="display:inline;">
+                        <input type="hidden" name="commentId" value="@item.CommentId" />
+                        <button type="submit" class="btn btn-danger ml-1">Delete</button>
+                    </form>
+            </tr>
+        }
+    </tbody>
+</table>

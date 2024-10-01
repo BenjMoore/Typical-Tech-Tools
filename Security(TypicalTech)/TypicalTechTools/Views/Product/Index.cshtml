@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TypicalTechTools.Models.Product>
+@{
+    ViewData["Title"] = "Home Page";
+
+    // Retrieve the authentication status and access level from the cookies
+    string authStatus = Context.Request.Cookies["Authenticated"];
+    int? accessLevel = int.TryParse(Context.Request.Cookies["AccessLevel"], out int level) ? level : (int?)null;
+    bool loggedIn = !string.IsNullOrEmpty(authStatus) && authStatus.Equals("True");
+    bool isAdmin = accessLevel == 0;
+}
+
+<div class="text-center">
+    <h1>Products</h1>
+</div>
+
+@if (loggedIn && isAdmin)
+{
+    <div class="text-right mb-3">
+        @Html.ActionLink("Add New Product", "AddProduct", "Product", new { }, new { @class = "btn btn-primary" })
+        
+        
+    </div>
+}
+@if (TempData["AlertMessage"] != null)
+{
+    <script type="text/javascript">
+        alert('@TempData["AlertMessage"]');
+    </script>
+}
+
+<div class="card-container row">
+    @foreach (var product in Model)
+    {
+        <div class="single-card card shadow m-2 text-center @(isAdmin ? "admin-card" : "")" style="width: 18rem; @(isAdmin ? "height: 32rem;" : "height: 28rem;")">
+            <h2>@product.ProductName</h2>
+            <h3>$@product.ProductPrice</h3>
+            <p style="height:10rem">@product.ProductDescription</p>
+            <small>Product Code: @product.ProductCode</small><br />
+            <small>Updated Date: @product.UpdatedDate.ToString("g")</small>
+            <div>
+                @Html.ActionLink("Comments", "CommentList", "Comment", new { productCode = product.ProductCode }, new { @class = "btn btn-primary m-2" })
+            </div>
+            @if (loggedIn && isAdmin)
+            {
+                <form asp-action="Edit" asp-controller="Product" method="post" class="mt-2">
+                    <input type="hidden" name="ProductCode" value="@product.ProductCode" />
+                    <div class="form-group">
+                        <label for="ProductPrice">New Price</label>
+                        <input type="text" class="form-control" name="ProductPrice" value="@product.ProductPrice" />
+                    </div>
+                    <button type="submit" class="btn btn-success mt-2">Update Price</button>
+                </form>
+            }
+        </div>
+    }
+</div>
+
+<style>
+    .admin-card {
+        padding-bottom: 2rem; 
+    }
+</style>

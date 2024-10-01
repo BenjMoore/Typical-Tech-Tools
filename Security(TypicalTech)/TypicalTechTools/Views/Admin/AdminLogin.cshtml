@@ -1,0 +1,55 @@
+﻿@model TypicalTechTools.Models.AdminUser
+
+@{
+    ViewData["Title"] = "AdminLogin";
+
+    // Retrieve the authentication status from the cookie
+    string authStatus = Context.Request.Cookies["Authenticated"];
+    bool loggedIn = !string.IsNullOrEmpty(authStatus) && authStatus.Equals("True");
+}
+
+@if (loggedIn)
+{
+    <h1 style="text-align:center">Welcome!</h1>
+    <div class="text-center">
+        <form asp-action="Logout" method="post">
+            <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
+    </div>
+}
+else
+{
+    <h1>Login</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="AdminLogin" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>
+            </form>
+           <p style="font-weight:600;"> Example User Accounts</p>
+            <br />
+            <p style="font-weight:600;"> User Level Account<br /> Username = Username | Password = Test</p>
+            <br />
+            <p style="font-weight:600;">Admin Level Account<br /> Username = Admin | Password = Test</p>
+            
+        </div>
+    </div>
+}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

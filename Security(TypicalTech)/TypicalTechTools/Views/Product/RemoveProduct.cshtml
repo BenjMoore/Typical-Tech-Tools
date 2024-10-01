@@ -1,0 +1,47 @@
+﻿@model TypicalTechTools.Models.Product
+
+@{
+    ViewData["Title"] = "Remove Product";
+    int loggedIn = 1;
+    // Retrieve the authentication status from the session
+    string authStatus = Context.Session.GetString("AccessLevel");
+    if (Convert.ToInt32(authStatus) == 0)
+    {
+        loggedIn = 0;
+    }
+    else
+    {
+        loggedIn = 1;
+    }
+}
+
+@if (loggedIn == 0)
+{
+    <h1>Remove a Product</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="RemoveProduct" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ProductCode" class="control-label"></label>
+                    <input asp-for="ProductCode" class="form-control" />
+                    <span asp-validation-for="ProductCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Remove Product" class="btn btn-warning" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+    <h2>You must be an admin to remove a product.</h2>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

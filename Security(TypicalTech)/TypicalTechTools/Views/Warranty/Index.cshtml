@@ -1,0 +1,73 @@
+﻿@model List<TypicalTechTools.Models.FileModel>
+
+@{
+    // Retrieve the authentication status and access level from the cookies
+    string authStatus = Context.Request.Cookies["Authenticated"];
+    int? accessLevel = int.TryParse(Context.Request.Cookies["AccessLevel"], out int level) ? level : (int?)null;
+    bool loggedIn = !string.IsNullOrEmpty(authStatus) && authStatus.Equals("True");
+    bool isAdmin = accessLevel == 0;
+}
+
+<div class="row d-flex justify-content-center">
+    <div class="col-8 card p-3">
+        <h2>LODGE WARRANTY CLAIM</h2>
+        <p>
+            If you have any problems with any of your products we are here to help.
+            To lodge a claim please download the warranty claim form using the following link.
+        </p>
+
+     
+
+        <p>
+            <br>Once downloaded please fill out the form with as much detail as possible regarding the problem with your product.
+            After completing the form, please lodge your warranty claim using the section below.
+        </p>
+        <p>
+            <strong>NOTE:</strong> Please do not upload any images at this time. If photographic evidence is required to
+            support your claim, a customer service representative will contact you to request any required images.
+        </p>
+    </div>
+     
+    <div class="col-8 card p-3 mt-4">
+        <a asp-controller="Warranty" asp-action="DownloadFile" asp-route-id="1" class="btn btn-primary ml-1">Download</a>
+        <form method="post" enctype="multipart/form-data" asp-controller="Warranty" asp-action="Upload">
+            <div class="form-group">
+                <div>
+                    <h5>Upload Completed Forms Here</h5>
+                    <input type="file" name="file" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Upload" class="btn btn-info" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    @if (isAdmin)
+    {
+        <div class="col-8 card align-items-center p-3 my-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Warranty Files</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.FileName</td>
+                            <td>
+                                <a asp-controller="Warranty" asp-action="DownloadFile" asp-route-id="@item.Id" class="btn btn-primary ml-1">Download</a>
+                                <a asp-controller="Warranty" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger ml-1">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
