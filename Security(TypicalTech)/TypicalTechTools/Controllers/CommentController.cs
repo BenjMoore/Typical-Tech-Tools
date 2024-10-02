@@ -50,8 +50,8 @@ namespace TypicalTools.Controllers
 
             return View(comment);
         }
-        [HttpPost]
-
+       
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult AddComment(Comment comment)
         {
@@ -117,7 +117,7 @@ namespace TypicalTools.Controllers
                 return RedirectToAction("CommentList");
             }
         }
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult SaveEdit(Comment comment)
         {
@@ -137,7 +137,7 @@ namespace TypicalTools.Controllers
             return RedirectToAction("CommentList", new { productCode = comment.ProductCode });
         }
 
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult RemoveComment(int commentId)
         {

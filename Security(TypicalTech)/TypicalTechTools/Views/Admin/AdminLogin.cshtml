@@ -38,6 +38,7 @@ else
                 <div class="form-group">
                     <input type="submit" value="Login" class="btn btn-primary" />
                 </div>
+                @Html.HiddenFor(Model => Model.ReturnUrl);
             </form>
            <p style="font-weight:600;"> Example User Accounts</p>
             <br />

@@ -3,6 +3,9 @@ using TypicalTechTools.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 namespace TypicalTechTools.Controllers
 {
@@ -16,11 +19,16 @@ namespace TypicalTechTools.Controllers
         }
 
         [HttpGet]
-        public IActionResult AdminLogin()
+        public IActionResult AdminLogin([FromQuery] string ReturnUrl)
         {
-            return View();
-        }
+            AdminUser userredirect = new AdminUser
+            {
+                ReturnUrl = string.IsNullOrWhiteSpace(ReturnUrl) ? "/Home": ReturnUrl
+            };
 
+            return View(userredirect);
+        }
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult AdminLogin(AdminUser user)
         {
@@ -33,23 +41,38 @@ namespace TypicalTechTools.Controllers
                 {
                     Expires = DateTime.Now.AddMinutes(30)
                 };
-                Response.Cookies.Append("Authenticated", "True", options);
+               // Response.Cookies.Append("Authenticated", "True", options);
                 Response.Cookies.Append("UserID", adminUser.UserID.ToString(), options);
-                Response.Cookies.Append("AccessLevel", adminUser.AccessLevel.ToString(), options);
+               // Response.Cookies.Append("AccessLevel", adminUser.AccessLevel.ToString(), options);
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Role, adminUser.Role)                  
+                };
+
+                var principle = new ClaimsPrincipal(new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme));
+                
+                var authProperties = new AuthenticationProperties
+                {
+                    AllowRefresh = true,
+                    IsPersistent = true
+                };
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,principle, authProperties);
 
                 return RedirectToAction("Index", "Product");
             }
 
             ModelState.AddModelError("", "Invalid username or password");
+
             return View(user);
         }
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult Logout()
         {
-            Response.Cookies.Delete("Authenticated");
-            Response.Cookies.Delete("UserID");
-            Response.Cookies.Delete("AccessLevel");
+            HttpContext.SignOutAsync();
+            //Response.Cookies.Delete("Authenticated");
+            //Response.Cookies.Delete("UserID");
+            //Response.Cookies.Delete("AccessLevel");
 
             return RedirectToAction("AdminLogin");
         }

@@ -67,19 +67,21 @@ namespace TypicalTechTools
         {
             string adminPassword = BCrypt.Net.BCrypt.HashPassword("Test");
             string userPassword = BCrypt.Net.BCrypt.HashPassword("Test");
+            string guestPassword = BCrypt.Net.BCrypt.HashPassword("Test");
 
             string query = @"
-            INSERT INTO Login (UserName, Password, AccessLevel)
+            INSERT INTO Login (UserName, Password, AccessLevel, Role)
             VALUES
-                ('Admin', @AdminPassword, '0'),
-                ('Username', @UserPassword, '1');
+                ('Admin', @AdminPassword, '0', 'Admin'),
+                ('Username', @UserPassword, '1','User'),
+                ('Guest', @guestPassword, '2','Guest');
             ";
 
             using (SqlCommand command = new SqlCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@AdminPassword", adminPassword);
                 command.Parameters.AddWithValue("@UserPassword", userPassword);
-
+                command.Parameters.AddWithValue("@guestPassword", guestPassword);
                 command.ExecuteNonQuery();
             }
         }
@@ -197,7 +199,8 @@ namespace TypicalTechTools
                         UserID INT PRIMARY KEY IDENTITY,
                         UserName VARCHAR(50) NOT NULL,
                         Password NVARCHAR(MAX) NOT NULL,
-                        AccessLevel VARCHAR(50) NOT NULL
+                        AccessLevel VARCHAR(50) NOT NULL,
+                        Role VARCHAR(50) NOT NULL
                     );
 
                    

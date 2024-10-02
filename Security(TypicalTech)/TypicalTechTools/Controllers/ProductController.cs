@@ -17,7 +17,7 @@ namespace TypicalTools.Controllers
         }
 
         // Show all products
-        
+        [Authorize]
         public IActionResult Index()
         {
             var products = _Parser.GetProducts();
@@ -28,7 +28,7 @@ namespace TypicalTools.Controllers
         {
             return View();
         }
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult AddProduct(Product product)
         {
