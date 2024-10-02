@@ -28,6 +28,7 @@ namespace TypicalTechTools.Controllers
 
             return View(userredirect);
         }
+
         [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult AdminLogin(AdminUser user)
@@ -43,7 +44,7 @@ namespace TypicalTechTools.Controllers
                 };
                // Response.Cookies.Append("Authenticated", "True", options);
                 Response.Cookies.Append("UserID", adminUser.UserID.ToString(), options);
-               // Response.Cookies.Append("AccessLevel", adminUser.AccessLevel.ToString(), options);
+                Response.Cookies.Append("AccessLevel", adminUser.AccessLevel.ToString(), options);
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Role, adminUser.Role)                  

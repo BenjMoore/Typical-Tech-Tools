@@ -4,8 +4,10 @@
     ViewData["Title"] = "AdminLogin";
 
     // Retrieve the authentication status from the cookie
-    string authStatus = Context.Request.Cookies["Authenticated"];
-    bool loggedIn = !string.IsNullOrEmpty(authStatus) && authStatus.Equals("True");
+
+    int? accessLevel = int.TryParse(Context.Request.Cookies["AccessLevel"], out int level) ? level : (int?)null;
+    bool loggedIn = Context.User.Identity.IsAuthenticated;
+    bool isAdmin = accessLevel == 0;
 }
 
 @if (loggedIn)
