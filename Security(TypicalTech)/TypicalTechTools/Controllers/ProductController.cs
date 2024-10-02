@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TypicalTechTools.DataAccess;
 using TypicalTechTools.Models;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TypicalTools.Controllers
 {
@@ -16,6 +17,7 @@ namespace TypicalTools.Controllers
         }
 
         // Show all products
+        
         public IActionResult Index()
         {
             var products = _Parser.GetProducts();

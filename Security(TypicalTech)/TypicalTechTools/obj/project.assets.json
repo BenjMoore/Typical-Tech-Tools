@@ -11190,23 +11190,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Benjamin Moore\\.nuget\\packages\\": {},
+    "C:\\Users\\moore\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
+      "projectUniqueName": "G:\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
       "projectName": "TypicalTechTools",
-      "projectPath": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
-      "packagesPath": "C:\\Users\\Benjamin Moore\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\obj\\",
+      "projectPath": "G:\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
+      "packagesPath": "C:\\Users\\moore\\.nuget\\packages\\",
+      "outputPath": "G:\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Benjamin Moore\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\moore\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -11283,7 +11283,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

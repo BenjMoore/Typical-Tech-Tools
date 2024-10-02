@@ -9,71 +9,71 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TypicalTechTools
 build_property.RootNamespace = TypicalTechTools
-build_property.ProjectDir = C:\Users\Benjamin Moore\Github\ICTPRG537\Security(TypicalTech)\TypicalTechTools\
+build_property.ProjectDir = G:\Github\ICTPRG537\Security(TypicalTech)\TypicalTechTools\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Benjamin Moore\Github\ICTPRG537\Security(TypicalTech)\TypicalTechTools
+build_property.MSBuildProjectDirectory = G:\Github\ICTPRG537\Security(TypicalTech)\TypicalTechTools
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Admin/AdminLogin.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Admin/AdminLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Comment/AddComment.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Comment/AddComment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudFxBZGRDb21tZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Comment/CommentList.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Comment/CommentList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudFxDb21tZW50TGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Comment/EditComment.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Comment/EditComment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudFxFZGl0Q29tbWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Product/AddProduct.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Product/AddProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBZGRQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Product/Index.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Product/Privacy.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Product/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Product/RemoveProduct.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Product/RemoveProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxSZW1vdmVQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Shared/Error.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Shared/_ValidationScriptsPartial.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Warranty/Delete.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Warranty/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FycmFudHlcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Warranty/Index.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Warranty/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FycmFudHlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/_ViewImports.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/_ViewStart.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Benjamin Moore/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Shared/_Layout.cshtml]
+[G:/Github/ICTPRG537/Security(TypicalTech)/TypicalTechTools/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-s35ksq7y8l
