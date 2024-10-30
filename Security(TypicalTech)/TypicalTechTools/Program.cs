@@ -31,16 +31,12 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.SlidingExpiration = true;
         options.LoginPath = "/Admin/AdminLogin";
         options.AccessDeniedPath = "/Admin/AdminLogin";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+        options.SlidingExpiration = true;
     }
     );
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(
-    options => {
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
-        options.SlidingExpiration = true;
-        }
-    );
+
 
 
 var app = builder.Build();
