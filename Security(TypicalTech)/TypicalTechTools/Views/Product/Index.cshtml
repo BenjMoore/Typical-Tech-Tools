@@ -37,7 +37,7 @@
             <h3>$@product.ProductPrice</h3>
             <p style="height:10rem">@product.ProductDescription</p>
             <small>Product Code: @product.ProductCode</small><br />
-            <small>Updated Date: @product.UpdatedDate.ToString("g")</small>
+            <small>Updated Date: @product.UpdatedDate.ToString("dd MMMM yyyy h:mm tt")</small>
             <div>
                 @Html.ActionLink("Comments", "CommentList", "Comment", new { productCode = product.ProductCode }, new { @class = "btn btn-primary m-2" })
             </div>

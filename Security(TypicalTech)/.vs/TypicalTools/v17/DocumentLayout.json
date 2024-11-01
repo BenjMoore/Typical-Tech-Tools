@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|c:\\users\\benjamin moore\\github\\ictprg537\\security(typicaltech)\\typicaltechtools\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|solutionrelative:typicaltechtools\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|c:\\users\\benjamin moore\\github\\ictprg537\\security(typicaltech)\\typicaltechtools\\sqlconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|solutionrelative:typicaltechtools\\sqlconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -66,10 +70,6 @@
       "RelativeMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|solutionrelative:typicaltechtools\\views\\product\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|c:\\users\\benjamin moore\\github\\ictprg537\\security(typicaltech)\\typicaltechtools\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|solutionrelative:typicaltechtools\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|c:\\users\\benjamin moore\\github\\ictprg537\\security(typicaltech)\\typicaltechtools\\views\\product\\addproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|solutionrelative:typicaltechtools\\views\\product\\addproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -89,37 +89,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CommentController.cs",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Controllers\\CommentController.cs",
-              "RelativeDocumentMoniker": "TypicalTechTools\\Controllers\\CommentController.cs",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Controllers\\CommentController.cs",
-              "RelativeToolTip": "TypicalTechTools\\Controllers\\CommentController.cs",
-              "ViewState": "AQIAAEcAAAAAAAAAAAAIwIwAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.153Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "TypicalTechTools\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "TypicalTechTools\\Controllers\\AdminController.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAowAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.121Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Controllers\\HomeController.cs",
@@ -127,12 +101,11 @@
               "RelativeToolTip": "TypicalTechTools\\Controllers\\HomeController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.165Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.165Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ProductController.cs",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Controllers\\ProductController.cs",
@@ -140,25 +113,24 @@
               "RelativeToolTip": "TypicalTechTools\\Controllers\\ProductController.cs",
               "ViewState": "AQIAACYAAAAAAAAAAAAIwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.158Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.158Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "SQLConnector.cs",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\SQLConnector.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\SQLConnector.cs",
               "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\SQLConnector.cs",
               "RelativeToolTip": "TypicalTechTools\\SQLConnector.cs",
-              "ViewState": "AQIAAF4AAAAAAAAAAAAcwGkAAAA5AAAA",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAIwGkAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-30T03:58:47.178Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ServiceProviderServiceExtensions.cs",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\AppData\\Local\\Temp\\.vsdbgsrc\\c04771138c1dd239eb4063f46c6d7e5e0de6412ee828e88422b63a839c61be8e\\ServiceProviderServiceExtensions.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\c04771138c1dd239eb4063f46c6d7e5e0de6412ee828e88422b63a839c61be8e\\ServiceProviderServiceExtensions.cs",
@@ -171,7 +143,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Encyript.cs",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\DataAccess\\Encyript.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\DataAccess\\Encyript.cs",
@@ -179,12 +151,11 @@
               "RelativeToolTip": "TypicalTechTools\\DataAccess\\Encyript.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.086Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.086Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "DataAccessLayer.cs",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\DataAccess\\DataAccessLayer.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\DataAccess\\DataAccessLayer.cs",
@@ -192,12 +163,48 @@
               "RelativeToolTip": "TypicalTechTools\\DataAccess\\DataAccessLayer.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.007Z",
+              "WhenOpened": "2024-10-30T03:58:47.007Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Views\\Product\\Index.cshtml",
+              "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Product\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Views\\Product\\Index.cshtml",
+              "RelativeToolTip": "TypicalTechTools\\Views\\Product\\Index.cshtml",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAADEAAAB0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-30T03:58:47.111Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 2,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "TypicalTechTools\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "TypicalTechTools\\Controllers\\AdminController.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAowAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T03:58:47.121Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CommentController.cs",
+              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Controllers\\CommentController.cs",
+              "RelativeDocumentMoniker": "TypicalTechTools\\Controllers\\CommentController.cs",
+              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Controllers\\CommentController.cs",
+              "RelativeToolTip": "TypicalTechTools\\Controllers\\CommentController.cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAIwIwAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T03:58:47.153Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "EditComment.cshtml",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Views\\Comment\\EditComment.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Comment\\EditComment.cshtml",
@@ -209,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Comment.cs",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Models\\Comment.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Models\\Comment.cs",
@@ -217,12 +224,11 @@
               "RelativeToolTip": "TypicalTechTools\\Models\\Comment.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T05:13:04.284Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-01T05:13:04.284Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Program.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Program.cs",
@@ -230,20 +236,7 @@
               "RelativeToolTip": "TypicalTechTools\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.171Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Views\\Product\\Index.cshtml",
-              "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Product\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Views\\Product\\Index.cshtml",
-              "RelativeToolTip": "TypicalTechTools\\Views\\Product\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T03:58:47.111Z"
+              "WhenOpened": "2024-10-30T03:58:47.171Z"
             },
             {
               "$type": "Document",
@@ -259,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Views\\Product\\Privacy.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Product\\Privacy.cshtml",
@@ -271,7 +264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "RemoveProduct.cshtml",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Views\\Product\\RemoveProduct.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Product\\RemoveProduct.cshtml",
@@ -295,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "AdminUser.cs",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Models\\AdminUser.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Models\\AdminUser.cs",
@@ -307,7 +300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "AddComment.cshtml",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Views\\Comment\\AddComment.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Comment\\AddComment.cshtml",
@@ -319,7 +312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "CommentList.cshtml",
               "DocumentMoniker": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\Views\\Comment\\CommentList.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Comment\\CommentList.cshtml",
