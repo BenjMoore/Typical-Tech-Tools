@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System.Text.Encodings.Web;
 
 namespace TypicalTools.Controllers
 {
@@ -50,47 +51,49 @@ namespace TypicalTools.Controllers
 
             return View(comment);
         }
-       
+
         [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult AddComment(Comment comment)
         {
-            // Retrieve the UserID from the cookie
             string userIdCookie = Request.Cookies["UserID"];
             comment.ProductCode = HttpContext.Session.GetString("ProductCode");
+
             if (string.IsNullOrEmpty(userIdCookie))
             {
-                // Handle the case where the user ID is not found in the cookie
                 ModelState.AddModelError("", "User is not authenticated.");
                 return View(comment);
             }
 
             if (!int.TryParse(userIdCookie, out int userId))
             {
-                // Handle the case where the UserID cookie value is invalid
                 ModelState.AddModelError("", "Invalid user ID.");
                 return View(comment);
             }
 
-            // Set the UserID in the comment model
-            comment.UserID = Convert.ToString(userId);
-            comment.CreatedDate = DateTime.Now;
+            if (string.IsNullOrWhiteSpace(comment.CommentText) || comment.CommentText.Length > 500)
+            {
+                ModelState.AddModelError("", "Comment content is required and should be 500 characters or less.");
+                return View(comment);
+            }
 
-            // Insert the comment into the database
+            comment.UserID = userId.ToString();
+            comment.CreatedDate = DateTime.Now;
 
             try
             {
                 _DBAccess.AddComment(comment);
+
                 return RedirectToAction("CommentList", new { productCode = comment.ProductCode });
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Error adding comment: " + ex.Message);
+                ModelState.AddModelError("", "Error adding comment: " + HtmlEncoder.Default.Encode(ex.Message));
             }
-
 
             return View(comment);
         }
+
         [HttpGet]
         public IActionResult EditComment(int commentId)
         {
@@ -129,9 +132,20 @@ namespace TypicalTools.Controllers
             string authStatus = HttpContext.Session.GetString("Authenticated");
             bool isAdmin = !string.IsNullOrWhiteSpace(authStatus) && authStatus.Equals("True");
 
-            if (comment.CommentText != null)
+            if (string.IsNullOrWhiteSpace(comment.CommentText) || comment.CommentText.Length > 500)
+            {
+                ModelState.AddModelError("", "Comment text is required and should be 500 characters or less.");
+                return View(comment);
+            }
+
+            try
             {
                 _DBAccess.EditComment(comment);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Error editing comment: " + HtmlEncoder.Default.Encode(ex.Message));
+                return View(comment);
             }
 
             return RedirectToAction("CommentList", new { productCode = comment.ProductCode });

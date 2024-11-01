@@ -11,22 +11,22 @@ namespace TypicalTechTools
     public class SQLConnector
     {
         public string ConnectionString;
-        private string dboConnectionString;
-        public string DboConnectionString { get { return dboConnectionString; } }
+        private string DboConnectionString;
+       
 
         public SQLConnector()
         {
             // This is for before creation
             this.ConnectionString = "Data Source=localhost;Integrated Security=True;TrustServerCertificate=True";
             // This is for after
-            this.dboConnectionString = "Data Source=localhost;Initial Catalog=TotalTools;Integrated Security=True;TrustServerCertificate=True";
+            this.DboConnectionString = "Data Source=localhost;Initial Catalog=TotalTools;Integrated Security=True;TrustServerCertificate=True";
             InitializeDatabase();
             SeedDatabase();
         }
         // Seed Database if empty
         public void SeedDatabase()
         {
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
 
@@ -157,7 +157,7 @@ namespace TypicalTechTools
                 }
             }
 
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 string createTablesQuery = @"
@@ -216,7 +216,7 @@ namespace TypicalTechTools
         // Validates user credentials 
         public bool ValidateAdminUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 string query = "SELECT Password FROM Login WHERE UserName = @UserName";
@@ -241,7 +241,7 @@ namespace TypicalTechTools
         // gets admin user returns DTO AdminUser
         public AdminUser GetAdminUser(string username)
         {
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 string query = "SELECT UserName, Password, UserID, AccessLevel FROM Login WHERE UserName = @UserName";
@@ -271,7 +271,7 @@ namespace TypicalTechTools
         // Creates new user, isnt currently in use but works 
         public void CreateAdminUser(AdminUser user)
         {
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 string query = "INSERT INTO Login (UserName, Password, UserID, AccessLevel) VALUES (@UserName, @Password, @UserID, @AccessLevel)";
@@ -293,7 +293,7 @@ namespace TypicalTechTools
         // add product
         public void AddProduct(Product product)
         {
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 string query = @"
@@ -314,7 +314,7 @@ namespace TypicalTechTools
         // remove product 
         public bool RemoveProduct(int productCode)
         {
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 string query = "DELETE FROM Products WHERE product_code = @ProductCode";
@@ -331,7 +331,7 @@ namespace TypicalTechTools
         // Update product code
         public void UpdateProduct(Product product)
         {
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 string query = @"
@@ -356,7 +356,7 @@ namespace TypicalTechTools
         // Get Product By product code 
         public Product GetProductByCode(string productCode)
         {
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 string query = "SELECT product_code, product_name, product_price, product_description, updated_date FROM Products WHERE product_code = @ProductCode";
@@ -390,7 +390,7 @@ namespace TypicalTechTools
         // Get Single Product
         public Product GetProduct(string productCode)
         {
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 string query = "SELECT * FROM Products WHERE product_code = @ProductCode";
@@ -421,7 +421,7 @@ namespace TypicalTechTools
         {
             var products = new List<Product>();
 
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 string query = "SELECT * FROM Products";
@@ -450,7 +450,7 @@ namespace TypicalTechTools
         // adds comment, takes dto comment
         public void AddComment(Comment comment)
         {
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 // Check if the product exists
@@ -484,7 +484,7 @@ namespace TypicalTechTools
         public List<Comment> GetCommentsForProduct(string productCode)
         {
             var comments = new List<Comment>();
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 string query = "SELECT * FROM Comments WHERE product_code = @ProductCode";
@@ -513,7 +513,7 @@ namespace TypicalTechTools
         //Edit comment Takes DTO Comment
         public void EditComment(Comment comment)
         {
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 comment.CreatedDate = DateTime.Now;
                 connection.Open();
@@ -533,7 +533,7 @@ namespace TypicalTechTools
         // Get Comment By ID
         public Comment GetComment(int commentId)
         {
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 string query = "SELECT * FROM Comments WHERE commentId = @CommentId";
@@ -562,7 +562,7 @@ namespace TypicalTechTools
         // Deletes comment by ID
         public void DeleteComment(int commentId)
         {
-            using (SqlConnection connection = new SqlConnection(dboConnectionString))
+            using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
                 string query = "DELETE FROM Comments WHERE commentId = @CommentId";
@@ -577,7 +577,7 @@ namespace TypicalTechTools
         // Adds a Waranty File
         public void AddWarrantyFile(FileModel file)
         {
-            using (var connection = new SqlConnection(dboConnectionString))
+            using (var connection = new SqlConnection(DboConnectionString))
             {
                 string query = "INSERT INTO WarrantyFiles (FileName, FilePath, UploadedDate) VALUES (@FileName, @FilePath, @UploadedDate)";
                 using (var command = new SqlCommand(query, connection))
@@ -595,7 +595,7 @@ namespace TypicalTechTools
         public List<FileModel> GetWarrantyFiles()
         {
             var files = new List<FileModel>();
-            using (var connection = new SqlConnection(dboConnectionString))
+            using (var connection = new SqlConnection(DboConnectionString))
             {
                 string query = "SELECT * FROM WarrantyFiles";
                 using (var command = new SqlCommand(query, connection))
@@ -622,7 +622,7 @@ namespace TypicalTechTools
         // Gets Warranty File By ID
         public FileModel GetWarrantyFileById(int id)
         {
-            using (var connection = new SqlConnection(dboConnectionString))
+            using (var connection = new SqlConnection(DboConnectionString))
             {
                 string query = "SELECT * FROM WarrantyFiles WHERE Id = @Id";
                 using (var command = new SqlCommand(query, connection))
@@ -650,7 +650,7 @@ namespace TypicalTechTools
         // Deletes Warranty File
         public void DeleteWarrantyFile(int id)
         {
-            using (var connection = new SqlConnection(dboConnectionString))
+            using (var connection = new SqlConnection(DboConnectionString))
             {
                 string query = "DELETE FROM WarrantyFiles WHERE Id = @Id";
                 using (var command = new SqlCommand(query, connection))
