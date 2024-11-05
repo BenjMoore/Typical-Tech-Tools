@@ -11196,11 +11196,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
+      "projectUniqueName": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
       "projectName": "TypicalTechTools",
-      "projectPath": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
+      "projectPath": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
       "packagesPath": "C:\\Users\\Benjamin Moore\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\obj\\",
+      "outputPath": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

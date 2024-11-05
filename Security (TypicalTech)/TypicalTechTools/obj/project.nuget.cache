@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2yx2qKcZ/hw=",
+  "dgSpecHash": "I49uM6oCgOY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security(TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
+  "projectFilePath": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Benjamin Moore\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Benjamin Moore\\.nuget\\packages\\azure.identity\\1.11.3\\azure.identity.1.11.3.nupkg.sha512",
