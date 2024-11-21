@@ -16,15 +16,17 @@ namespace TypicalTools.Controllers
             _Parser = parser;
         }
 
-        // Show all products
-        [Authorize]
+        // Public: Allow all users to view products
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var products = _Parser.GetProducts();
             return View(products);
         }
 
+        // Restrict to authenticated users
         [HttpGet]
+        [Authorize]
         public IActionResult AddProduct()
         {
             return View();
@@ -32,6 +34,7 @@ namespace TypicalTools.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
+        [Authorize]
         public IActionResult AddProduct(Product product)
         {
             if (ModelState.IsValid)
@@ -47,7 +50,6 @@ namespace TypicalTools.Controllers
         [Authorize]
         public IActionResult RemoveProduct(int productCode)
         {
-            // Check if user has admin access
             string accessLevelClaim = HttpContext.User.FindFirst("AccessLevel")?.Value;
             if (string.IsNullOrEmpty(accessLevelClaim) || Convert.ToInt32(accessLevelClaim) != 0)
             {
@@ -60,20 +62,19 @@ namespace TypicalTools.Controllers
             if (isRemoved)
             {
                 TempData["AlertMessage"] = "Product removed successfully.";
-                return RedirectToAction("Index");
             }
             else
             {
                 TempData["AlertMessage"] = "Product removal failed.";
-                return RedirectToAction("Index");
             }
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         [Authorize]
         public IActionResult Edit(string productCode, decimal productPrice)
         {
-            // Check if the user has admin access
             string accessLevelClaim = HttpContext.User.FindFirst("AccessLevel")?.Value;
             if (string.IsNullOrEmpty(accessLevelClaim) || Convert.ToInt32(accessLevelClaim) != 0)
             {
@@ -90,6 +91,7 @@ namespace TypicalTools.Controllers
             return RedirectToAction("Index");
         }
 
+        [AllowAnonymous]
         public IActionResult Privacy()
         {
             return View();

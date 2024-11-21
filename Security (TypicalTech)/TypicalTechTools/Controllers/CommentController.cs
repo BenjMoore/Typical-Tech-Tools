@@ -57,7 +57,7 @@ namespace TypicalTools.Controllers
         {
             comment.ProductCode = HttpContext.Session.GetString("ProductCode");
 
-            string userIdClaim = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            string userIdClaim = HttpContext.User.FindFirst("UserID")?.Value;
             if (string.IsNullOrEmpty(userIdClaim))
             {
                 ModelState.AddModelError("", "User is not authenticated.");
@@ -90,7 +90,7 @@ namespace TypicalTools.Controllers
         [HttpGet]
         public IActionResult EditComment(int commentId)
         {
-            string userIdClaim = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            string userIdClaim = HttpContext.User.FindFirst("UserID")?.Value;
             string accessLevelClaim = HttpContext.User.FindFirst("AccessLevel")?.Value;
 
             if (string.IsNullOrEmpty(userIdClaim))
@@ -147,7 +147,7 @@ namespace TypicalTools.Controllers
         [HttpPost]
         public IActionResult RemoveComment(int commentId)
         {
-            string userIdClaim = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            string userIdClaim = HttpContext.User.FindFirst("UserID")?.Value;
             string accessLevelClaim = HttpContext.User.FindFirst("AccessLevel")?.Value;
 
             if (string.IsNullOrEmpty(userIdClaim))

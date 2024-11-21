@@ -42,7 +42,7 @@ namespace TypicalTechTools.Controllers
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, adminUser.UserName),
-                    new Claim(ClaimTypes.NameIdentifier, adminUser.UserID.ToString()),
+                    new Claim("UserID", adminUser.UserID.ToString()),
                     new Claim(ClaimTypes.Role, adminUser.Role),
                     new Claim("AccessLevel", adminUser.AccessLevel.ToString())
                 };

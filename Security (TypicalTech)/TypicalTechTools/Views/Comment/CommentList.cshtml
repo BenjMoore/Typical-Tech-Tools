@@ -1,11 +1,14 @@
 ﻿@model IEnumerable<TypicalTechTools.Models.Comment>
 @using Microsoft.AspNetCore.Http;
+
 @{
     ViewData["Title"] = "CommentList";
 
     int productCode = 0;
-    string userId = Context.User.FindFirst("UserID")?.Value;
-    string accessLevel = Context.User.FindFirst("AccessLevel")?.Value;
+
+    // Retrieve user claims for UserID and AccessLevel
+    string userId = Context.User?.FindFirst("UserID")?.Value ?? string.Empty; 
+    string accessLevel = Context.User?.FindFirst("AccessLevel")?.Value ?? string.Empty;
 }
 
 @if (TempData["AlertMessage"] != null)
@@ -19,7 +22,6 @@
 
 <p>
     @Html.ActionLink("Add a new Comment", "AddComment", "Comment", new { productCode = @productCode })
-    @Html.AntiForgeryToken()
 </p>
 
 <table class="table">
@@ -44,6 +46,7 @@
                 </td>
                 <td>
                     @{
+                        // Check if user can edit or delete based on UserID and AccessLevel
                         bool canEditOrDelete = (item.UserID == userId) || (accessLevel == "0");
                     }
                     @if (canEditOrDelete)
