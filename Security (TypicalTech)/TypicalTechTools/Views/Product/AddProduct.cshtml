@@ -2,10 +2,11 @@
 
 @{
     ViewData["Title"] = "Add Product";
+    string accessLevelClaim = Context.User.FindFirst("AccessLevel")?.Value;
     int loggedIn = 1;
-    // Retrieve the authentication status from the session
-    string authStatus = Context.Session.GetString("AccessLevel");
-    if (Convert.ToInt32(authStatus) == 0)
+
+    // Check if the user is admin (accessLevel == 0)
+    if (accessLevelClaim != null && Convert.ToInt32(accessLevelClaim) == 0)
     {
         loggedIn = 0;
     }

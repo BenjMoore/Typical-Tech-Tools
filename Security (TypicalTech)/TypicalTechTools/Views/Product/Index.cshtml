@@ -2,12 +2,10 @@
 @{
     ViewData["Title"] = "Home Page";
 
-    // Retrieve the authentication status and access level from the cookies
-    
-    
-    int? accessLevel = int.TryParse(Context.Request.Cookies["AccessLevel"], out int level) ? level : (int?)null;
+    // Retrieve the authentication status and access level from the claims
     bool loggedIn = Context.User.Identity.IsAuthenticated;
-    bool isAdmin = accessLevel == 0;
+    string accessLevelClaim = Context.User.FindFirst("AccessLevel")?.Value;
+    bool isAdmin = accessLevelClaim != null && Convert.ToInt32(accessLevelClaim) == 0;
 }
 
 <div class="text-center">
@@ -18,8 +16,6 @@
 {
     <div class="text-right mb-3">
         @Html.ActionLink("Add New Product", "AddProduct", "Product", new { }, new { @class = "btn btn-primary" })
-        
-        
     </div>
 }
 @if (TempData["AlertMessage"] != null)
@@ -58,6 +54,6 @@
 
 <style>
     .admin-card {
-        padding-bottom: 2rem; 
+        padding-bottom: 2rem;
     }
 </style>

@@ -23,7 +23,7 @@ namespace TypicalTechTools.Controllers
         {
             AdminUser userredirect = new AdminUser
             {
-                ReturnUrl = string.IsNullOrWhiteSpace(ReturnUrl) ? "/Home": ReturnUrl
+                ReturnUrl = string.IsNullOrWhiteSpace(ReturnUrl) ? "/Home" : ReturnUrl
             };
 
             return View(userredirect);
@@ -31,65 +31,77 @@ namespace TypicalTechTools.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public IActionResult AdminLogin(AdminUser user)
+        public async Task<IActionResult> AdminLogin(AdminUser user)
         {
             bool userAuthorised = _dataAccessLayer.ValidateAdminUser(user.UserName, user.Password);
             if (userAuthorised)
             {
                 var adminUser = _dataAccessLayer.GetAdminUser(user.UserName);
 
-                CookieOptions options = new CookieOptions
-                {
-                    Expires = DateTime.Now.AddMinutes(30)
-                };
-               // Response.Cookies.Append("Authenticated", "True", options);
-                Response.Cookies.Append("UserID", adminUser.UserID.ToString(), options);
-                Response.Cookies.Append("AccessLevel", adminUser.AccessLevel.ToString(), options);
+                // Create claims based on the user info
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Role, adminUser.Role)                  
+                    new Claim(ClaimTypes.Name, adminUser.UserName),
+                    new Claim(ClaimTypes.NameIdentifier, adminUser.UserID.ToString()),
+                    new Claim(ClaimTypes.Role, adminUser.Role),
+                    new Claim("AccessLevel", adminUser.AccessLevel.ToString())
                 };
 
-                var principle = new ClaimsPrincipal(new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme));
-                
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                // Create a ClaimsPrincipal from the claims identity
+                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
                 var authProperties = new AuthenticationProperties
                 {
                     AllowRefresh = true,
                     IsPersistent = true
                 };
-                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,principle, authProperties);
 
+                // Sign in the user using ClaimsPrincipal
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal, authProperties);
+
+                // Redirect to the desired page
                 return RedirectToAction("Index", "Product");
             }
 
             ModelState.AddModelError("", "Invalid username or password");
-
             return View(user);
         }
+
+        [HttpGet]
+        public IActionResult CreateAccount()
+        {
+            return View();
+        }
+
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public IActionResult Logout()
+        public IActionResult CreateAccount(AdminUser user)
         {
-            HttpContext.SignOutAsync();
-            //Response.Cookies.Delete("Authenticated");
-            //Response.Cookies.Delete("UserID");
-            //Response.Cookies.Delete("AccessLevel");
+            // Your logic to create a new account
+            return Ok();
+        }
 
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("AdminLogin");
         }
 
         [HttpGet]
         public IActionResult AdminDashboard()
         {
-            string authStatus = Request.Cookies["Authenticated"];
-            int? accessLevel = int.TryParse(Request.Cookies["AccessLevel"], out int level) ? level : (int?)null;
-
-            if (authStatus == "True" && accessLevel == 0)
+            // Check if the user is authenticated and if they have the correct role/claims
+            var accessLevelClaim = User.FindFirst("AccessLevel")?.Value;
+            if (accessLevelClaim == null || int.TryParse(accessLevelClaim, out int accessLevel) && accessLevel != 0)
             {
-                return View();
+                return RedirectToAction("AdminLogin");
             }
 
-            return RedirectToAction("AdminLogin");
+            return View();
         }
     }
 }

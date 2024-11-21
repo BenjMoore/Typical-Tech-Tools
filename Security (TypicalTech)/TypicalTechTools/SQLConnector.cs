@@ -127,10 +127,10 @@ namespace TypicalTechTools
         private void InsertWarrantyFiles(SqlConnection connection)
         {
             string query = @"
-            IF NOT EXISTS (SELECT * FROM WarrantyFiles WHERE FileName = 'TypicalTools_Vaughn.docx')
+            IF NOT EXISTS (SELECT * FROM WarrantyFiles WHERE FileName = 'TypicalTools_WarrantyForm.docx.enc')
             BEGIN
                 INSERT INTO WarrantyFiles (FileName, FilePath, UploadedDate)
-                VALUES ('TypicalTools_Vaughn.docx', 'wwwroot/Uploads/TypicalTools_Vaughn.docx', GETDATE());
+                VALUES ('TypicalTools_WarrantyForm.docx.enc', 'wwwroot/Uploads/TypicalTools_WarrantyForm.docx.enc', GETDATE());
             END;"
             ;
 
@@ -244,7 +244,7 @@ namespace TypicalTechTools
             using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
-                string query = "SELECT UserName, Password, UserID, AccessLevel FROM Login WHERE UserName = @UserName";
+                string query = "SELECT UserName, Password, UserID, AccessLevel, Role FROM Login WHERE UserName = @UserName";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -259,7 +259,8 @@ namespace TypicalTechTools
                                 UserName = reader["UserName"].ToString(),
                                 Password = reader["Password"].ToString(),
                                 UserID = Convert.ToInt32(reader["UserID"]),
-                                AccessLevel = Convert.ToInt32(reader["AccessLevel"])
+                                AccessLevel = Convert.ToInt32(reader["AccessLevel"]),
+                                Role = reader["Role"].ToString()
                             };
                         }
                     }

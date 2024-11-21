@@ -23,16 +23,17 @@ namespace TypicalTools.Controllers
             var products = _Parser.GetProducts();
             return View(products);
         }
+
         [HttpGet]
         public IActionResult AddProduct()
         {
             return View();
         }
+
         [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult AddProduct(Product product)
         {
-
             if (ModelState.IsValid)
             {
                 product.UpdatedDate = DateTime.Now;
@@ -41,45 +42,42 @@ namespace TypicalTools.Controllers
             }
             return View(product);
         }
-      /*  [HttpPost]
-        [Route("/RemoveProduct")]
-        public IActionResult RemoveProduct(int productCode)
-        {
-            if (Request.Cookies.TryGetValue("UserID", out string userId))
-            {
-                string authStatus = HttpContext.Session.GetString("AccessLevel");
-                if (!string.IsNullOrEmpty(authStatus) && Convert.ToInt32(authStatus) == 0)
-                {
-                    // User is an admin
-                    bool isRemoved = _Parser.RemoveProduct(productCode);
-
-                    if (isRemoved)
-                    {
-                        TempData["AlertMessage"] = "Product removed successfully.";
-                        return View();
-                    }
-                    else
-                    {
-                        TempData["AlertMessage"] = "Product removal failed.";
-                        return View();
-                    }
-
-                   
-                }
-            }
-
-            TempData["AlertMessage"] = "You are not authorized to remove products.";
-            return RedirectToAction("Index", "Home");
-        }
-      */
 
         [HttpPost]
+        [Authorize]
+        public IActionResult RemoveProduct(int productCode)
+        {
+            // Check if user has admin access
+            string accessLevelClaim = HttpContext.User.FindFirst("AccessLevel")?.Value;
+            if (string.IsNullOrEmpty(accessLevelClaim) || Convert.ToInt32(accessLevelClaim) != 0)
+            {
+                TempData["AlertMessage"] = "You are not authorized to remove products.";
+                return RedirectToAction("Index", "Home");
+            }
+
+            bool isRemoved = _Parser.RemoveProduct(productCode);
+
+            if (isRemoved)
+            {
+                TempData["AlertMessage"] = "Product removed successfully.";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["AlertMessage"] = "Product removal failed.";
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        [Authorize]
         public IActionResult Edit(string productCode, decimal productPrice)
         {
-            // Check if the user is authenticated and has admin access
-            if (Request.Cookies["Authenticated"] != "True" || int.Parse(Request.Cookies["AccessLevel"]) != 0)
+            // Check if the user has admin access
+            string accessLevelClaim = HttpContext.User.FindFirst("AccessLevel")?.Value;
+            if (string.IsNullOrEmpty(accessLevelClaim) || Convert.ToInt32(accessLevelClaim) != 0)
             {
-                return Unauthorized(); // Only allow access if authenticated and access level is 0 (admin)
+                return Unauthorized(); // Only allow access if access level is 0 (admin)
             }
 
             var product = _Parser.GetProductByCode(productCode);

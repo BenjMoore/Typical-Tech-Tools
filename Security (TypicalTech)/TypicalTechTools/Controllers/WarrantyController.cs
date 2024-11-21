@@ -22,50 +22,113 @@ namespace TypicalTechTools.Controllers
         public IActionResult Index()
         {
             var warrantyFiles = _sqlConnector.GetWarrantyFiles();
-            if (warrantyFiles == null) 
+            if (warrantyFiles == null || !warrantyFiles.Any())
             {
-                new List<FileModel>();
-                return View("Index");
+                return View("Index", new List<FileModel>());
             }
-            return View(warrantyFiles);
+
+            // Skip the first file in the list
+            var filesToDisplay = warrantyFiles.Skip(1).ToList();
+
+            return View(filesToDisplay);
         }
+
 
         [HttpPost]
         public IActionResult Upload(IFormFile file)
         {
             if (file != null && file.Length > 0)
             {
+                // Generate a unique file name
                 var fileName = GenerateUniqueFileName(file.FileName);
-                var filePath = Path.Combine(_environment.WebRootPath, "Uploads", fileName);
+                var uploadsDirectory = Path.Combine(_environment.WebRootPath, "Uploads");
 
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                // Ensure the Uploads directory exists
+                if (!Directory.Exists(uploadsDirectory))
+                {
+                    Directory.CreateDirectory(uploadsDirectory);
+                }
+
+                // Full path to save the encrypted file
+                var encryptedFilePath = Path.Combine(uploadsDirectory, fileName + ".enc");
+
+                // Save the uploaded file temporarily
+                var tempFilePath = Path.GetTempFileName();
+                using (var stream = new FileStream(tempFilePath, FileMode.Create))
                 {
                     file.CopyTo(stream);
                 }
 
+                // Encrypt the file and save it to the final destination
+                TypicalTechTools.DataAccess.Encrypt.EncryptFile(tempFilePath, encryptedFilePath);
+
+                // Clean up the temporary file
+                if (System.IO.File.Exists(tempFilePath))
+                {
+                    System.IO.File.Delete(tempFilePath);
+                }
+
+                // Save file information to the database
                 var warrantyFile = new FileModel
                 {
-                    FileName = fileName,
-                    FilePath = filePath,
+                    FileName = fileName + ".enc", // Save the encrypted file name
+                    FilePath = encryptedFilePath,
                     UploadedDate = DateTime.Now
                 };
                 _sqlConnector.AddWarrantyFile(warrantyFile);
             }
 
-            return RedirectToAction("index");
+            return RedirectToAction("Index");
         }
 
         public IActionResult DownloadFile(int id)
         {
+            // Retrieve the file metadata from the database
             var warrantyFile = _sqlConnector.GetWarrantyFileById(id);
             if (warrantyFile == null)
             {
                 return NotFound();
             }
 
-            var bytes = System.IO.File.ReadAllBytes(warrantyFile.FilePath);
-            return File(bytes, "application/octet-stream", warrantyFile.FileName);
+            // Construct the full path to the encrypted file in the Uploads directory
+            var encryptedFilePath = $@"wwwroot/Uploads/{warrantyFile.FileName}";
+
+            if (!System.IO.File.Exists(encryptedFilePath))
+            {
+                return NotFound("The requested file does not exist on the server.");
+            }
+
+            // Temporary decrypted file location
+            var tempFilePath = Path.GetTempFileName();
+
+            try
+            {
+                // Decrypt the file
+                TypicalTechTools.DataAccess.Encrypt.DecryptFile(encryptedFilePath, tempFilePath);
+
+                // Read the decrypted file into a byte array
+                var bytes = System.IO.File.ReadAllBytes(tempFilePath);
+
+                // Return the file as a download
+                return File(bytes, "application/octet-stream", warrantyFile.FileName.Replace(".enc", ""));
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (logging implementation is assumed)
+                Console.WriteLine($"Error decrypting file: {ex.Message}");
+                return StatusCode(500, "An error occurred while processing the file.");
+            }
+            finally
+            {
+                // Clean up the temporary file
+                if (System.IO.File.Exists(tempFilePath))
+                {
+                    System.IO.File.Delete(tempFilePath);
+                }
+            }
         }
+
+
         public IActionResult Delete(int id)
         {
             var warrantyFile = _sqlConnector.GetWarrantyFileById(id);

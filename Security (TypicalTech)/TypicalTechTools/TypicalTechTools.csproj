@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Admin\CreateAccount.cshtml" />
     <Content Remove="wwwroot\data\Products.csv" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Admin\CreateAccount.cshtml" />
     <None Include="wwwroot\data\Products.csv" />
   </ItemGroup>
 
@@ -25,6 +27,14 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Uploads\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Admin\CreateAccount.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Admin\CreateAccount.cshtml" />
   </ItemGroup>
 
 </Project>

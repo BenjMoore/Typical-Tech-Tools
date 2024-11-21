@@ -2,20 +2,14 @@
 
 @{
     ViewData["Title"] = "Remove Product";
-    int loggedIn = 1;
-    // Retrieve the authentication status from the session
-    string authStatus = Context.Session.GetString("AccessLevel");
-    if (Convert.ToInt32(authStatus) == 0)
-    {
-        loggedIn = 0;
-    }
-    else
-    {
-        loggedIn = 1;
-    }
+    bool loggedIn = Context.User.Identity.IsAuthenticated;
+
+    // Retrieve the access level from the claims
+    string accessLevelClaim = Context.User.FindFirst("AccessLevel")?.Value;
+    bool isAdmin = accessLevelClaim != null && Convert.ToInt32(accessLevelClaim) == 0;
 }
 
-@if (loggedIn == 0)
+@if (isAdmin)
 {
     <h1>Remove a Product</h1>
     <hr />

@@ -5,8 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System.Text.Encodings.Web;
+using System.Security.Claims;
 
 namespace TypicalTools.Controllers
 {
@@ -19,8 +18,8 @@ namespace TypicalTools.Controllers
         {
             _DBAccess = sqlConnector;
             _logger = logger;
-
         }
+
         [HttpGet]
         public IActionResult CommentList(string productCode)
         {
@@ -56,18 +55,12 @@ namespace TypicalTools.Controllers
         [HttpPost]
         public IActionResult AddComment(Comment comment)
         {
-            string userIdCookie = Request.Cookies["UserID"];
             comment.ProductCode = HttpContext.Session.GetString("ProductCode");
 
-            if (string.IsNullOrEmpty(userIdCookie))
+            string userIdClaim = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim))
             {
                 ModelState.AddModelError("", "User is not authenticated.");
-                return View(comment);
-            }
-
-            if (!int.TryParse(userIdCookie, out int userId))
-            {
-                ModelState.AddModelError("", "Invalid user ID.");
                 return View(comment);
             }
 
@@ -77,7 +70,7 @@ namespace TypicalTools.Controllers
                 return View(comment);
             }
 
-            comment.UserID = userId.ToString();
+            comment.UserID = userIdClaim;
             comment.CreatedDate = DateTime.Now;
 
             try
@@ -88,7 +81,7 @@ namespace TypicalTools.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Error adding comment: " + HtmlEncoder.Default.Encode(ex.Message));
+                ModelState.AddModelError("", "Error adding comment: " + ex.Message);
             }
 
             return View(comment);
@@ -97,29 +90,31 @@ namespace TypicalTools.Controllers
         [HttpGet]
         public IActionResult EditComment(int commentId)
         {
-            Request.Cookies.TryGetValue("AccessLevel", out string accessLevel);
+            string userIdClaim = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            string accessLevelClaim = HttpContext.User.FindFirst("AccessLevel")?.Value;
 
-            if (Request.Cookies.TryGetValue("UserID", out string userId))
-            {
-                Comment comment = _DBAccess.GetComment(commentId);
-                if (Convert.ToInt32(accessLevel) == 0)
-                {
-                    return View(comment);
-                }
-                else if (comment == null || comment.UserID != userId)
-                {
-                    TempData["AlertMessage"] = "You are not authorized to edit this comment.";
-                    return RedirectToAction("CommentList", new { productCode = comment?.ProductCode });
-                }
-
-                return View(comment);
-            }
-            else
+            if (string.IsNullOrEmpty(userIdClaim))
             {
                 TempData["AlertMessage"] = "User Not Logged in";
                 return RedirectToAction("CommentList");
             }
+
+            Comment comment = _DBAccess.GetComment(commentId);
+            if (comment == null)
+            {
+                TempData["AlertMessage"] = "Comment not found.";
+                return RedirectToAction("CommentList");
+            }
+
+            if (accessLevelClaim == "0" || comment.UserID == userIdClaim)
+            {
+                return View(comment);
+            }
+
+            TempData["AlertMessage"] = "You are not authorized to edit this comment.";
+            return RedirectToAction("CommentList", new { productCode = comment.ProductCode });
         }
+
         [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult SaveEdit(Comment comment)
@@ -128,9 +123,6 @@ namespace TypicalTools.Controllers
             {
                 return RedirectToAction("Index", "Product");
             }
-
-            string authStatus = HttpContext.Session.GetString("Authenticated");
-            bool isAdmin = !string.IsNullOrWhiteSpace(authStatus) && authStatus.Equals("True");
 
             if (string.IsNullOrWhiteSpace(comment.CommentText) || comment.CommentText.Length > 500)
             {
@@ -144,7 +136,7 @@ namespace TypicalTools.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Error editing comment: " + HtmlEncoder.Default.Encode(ex.Message));
+                ModelState.AddModelError("", "Error editing comment: " + ex.Message);
                 return View(comment);
             }
 
@@ -155,32 +147,30 @@ namespace TypicalTools.Controllers
         [HttpPost]
         public IActionResult RemoveComment(int commentId)
         {
-            Request.Cookies.TryGetValue("AccessLevel", out string accessLevel);
+            string userIdClaim = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            string accessLevelClaim = HttpContext.User.FindFirst("AccessLevel")?.Value;
 
-            if (Request.Cookies.TryGetValue("UserID", out string userId))
-            {
-                Comment comment = _DBAccess.GetComment(commentId);
-                if (Convert.ToInt32(accessLevel) == 0)
-                {
-                    _DBAccess.DeleteComment(commentId);
-                    return RedirectToAction("CommentList", new { productCode = comment.ProductCode });
-                }
-                else if (comment == null || comment.UserID != userId)
-                {
-                    TempData["AlertMessage"] = "You are not authorized to remove this comment.";
-                    return RedirectToAction("CommentList", new { productCode = comment?.ProductCode });
-                }
-
-
-                _DBAccess.DeleteComment(commentId);
-                return RedirectToAction("CommentList", new { productCode = comment.ProductCode });
-            }
-            else
+            if (string.IsNullOrEmpty(userIdClaim))
             {
                 TempData["AlertMessage"] = "User Not Logged in";
                 return RedirectToAction("CommentList");
             }
 
+            Comment comment = _DBAccess.GetComment(commentId);
+            if (comment == null)
+            {
+                TempData["AlertMessage"] = "Comment not found.";
+                return RedirectToAction("CommentList");
+            }
+
+            if (accessLevelClaim == "0" || comment.UserID == userIdClaim)
+            {
+                _DBAccess.DeleteComment(commentId);
+                return RedirectToAction("CommentList", new { productCode = comment.ProductCode });
+            }
+
+            TempData["AlertMessage"] = "You are not authorized to remove this comment.";
+            return RedirectToAction("CommentList", new { productCode = comment.ProductCode });
         }
     }
 }

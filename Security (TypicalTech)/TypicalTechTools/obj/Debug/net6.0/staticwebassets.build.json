@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7Ro3Ydm4IxkxX5DYATdj+cBGK2Z1Ac8cyLOYG3k4XtQ=",
+  "Hash": "3BM/5qkAsAIamdSYmsFWyqMZRytU9QlBZBBE5CRUAEs=",
   "Source": "TypicalTechTools",
   "BasePath": "_content/TypicalTechTools",
   "Mode": "Default",
@@ -110,25 +110,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\wwwroot\\Forms\\TypicalTools_WarrantyForm.docx",
-      "SourceId": "TypicalTechTools",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\wwwroot\\",
-      "BasePath": "_content/TypicalTechTools",
-      "RelativePath": "Forms/TypicalTools_WarrantyForm.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Forms\\TypicalTools_WarrantyForm.docx"
     },
     {
       "Identity": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\wwwroot\\js\\site.js",
@@ -1233,12 +1214,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\wwwroot\\Uploads\\connectionstring.txt",
+      "Identity": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\wwwroot\\Uploads\\TypicalTools_WarrantyForm.docx.enc",
       "SourceId": "TypicalTechTools",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\wwwroot\\",
       "BasePath": "_content/TypicalTechTools",
-      "RelativePath": "Uploads/connectionstring.txt",
+      "RelativePath": "Uploads/TypicalTools_WarrantyForm.docx.enc",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1249,26 +1230,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\connectionstring.txt"
-    },
-    {
-      "Identity": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\wwwroot\\Uploads\\TypicalTools_Vaughn.docx",
-      "SourceId": "TypicalTechTools",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\wwwroot\\",
-      "BasePath": "_content/TypicalTechTools",
-      "RelativePath": "Uploads/TypicalTools_Vaughn.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\TypicalTools_Vaughn.docx"
+      "OriginalItemSpec": "wwwroot\\Uploads\\TypicalTools_WarrantyForm.docx.enc"
     }
   ]
 }
