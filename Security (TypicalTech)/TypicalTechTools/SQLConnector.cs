@@ -270,26 +270,51 @@ namespace TypicalTechTools
             return null; // Return null if the user is not found
         }
         // Creates new user, isnt currently in use but works 
-        public void CreateAdminUser(AdminUser user)
+        public bool CreateAdminUser(AdminUser user)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DboConnectionString))
+                {
+                    connection.Open();
+                    string query = "INSERT INTO Login (UserName, Password, UserID, AccessLevel, Role) VALUES (@UserName, @Password, @UserID, @AccessLevel, @Role)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
+                        command.Parameters.AddWithValue("@UserName", user.UserName);
+                        command.Parameters.AddWithValue("@Password", hashedPassword);
+                        command.Parameters.AddWithValue("@UserID", user.UserID);
+                        command.Parameters.AddWithValue("@AccessLevel", user.AccessLevel);
+                        command.Parameters.AddWithValue("@Role", user.Role);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        // If rows were affected, return true (indicating successful creation)
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Log the exception here (e.g., using a logging framework) if necessary
+                return false; // Return false if there was an error
+            }
+        }
+
+        public bool CheckUserNameExists(string userName)
         {
             using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
-                string query = "INSERT INTO Login (UserName, Password, UserID, AccessLevel) VALUES (@UserName, @Password, @UserID, @AccessLevel)";
-
+                string query = "SELECT COUNT(1) FROM Login WHERE UserName = @UserName";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
-                    command.Parameters.AddWithValue("@UserName", user.UserName);
-                    command.Parameters.AddWithValue("@Password", hashedPassword);
-                    command.Parameters.AddWithValue("@UserID", user.UserID);
-                    command.Parameters.AddWithValue("@AccessLevel", user.AccessLevel);
-
-                    command.ExecuteNonQuery();
+                    command.Parameters.AddWithValue("@UserName", userName);
+                    int userCount = (int)command.ExecuteScalar(); // Check if user exists
+                    return userCount > 0; // Return true if username exists, otherwise false
                 }
             }
         }
-    
 
         // add product
         public void AddProduct(Product product)

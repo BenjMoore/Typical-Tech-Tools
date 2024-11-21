@@ -79,8 +79,24 @@ namespace TypicalTechTools.Controllers
         [HttpPost]
         public IActionResult CreateAccount(AdminUser user)
         {
-            // Your logic to create a new account
-            return Ok();
+            if (ModelState.IsValid)
+            {
+                // Check if the username already exists
+                bool usernameExists = _dataAccessLayer.CheckUserNameExists(user.UserName);
+                if (usernameExists)
+                {
+                    ModelState.AddModelError(string.Empty, "Username already exists.");
+                    return View(user);
+                }
+
+                // Create the new admin user
+                _dataAccessLayer.CreateAdminUser(user);
+
+                // Redirect to the login page or wherever you'd like to navigate after account creation
+                return RedirectToAction("AdminLogin");
+            }
+
+            return View(user); // Return the view with validation errors if model is not valid
         }
 
         [ValidateAntiForgeryToken]

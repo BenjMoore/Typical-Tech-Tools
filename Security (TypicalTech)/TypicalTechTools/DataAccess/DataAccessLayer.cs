@@ -39,6 +39,14 @@ namespace TypicalTechTools.DataAccess
         {
             return _sqlConnector.GetAdminUser(userName);
         }
+        public void CreateAdminUser(AdminUser adminUser) 
+        {
+            _sqlConnector.CreateAdminUser(adminUser);
+        }
+        public bool CheckUserNameExists(string userName) 
+        {
+            return _sqlConnector.CheckUserNameExists(userName);
+        }
         #endregion
         #region Products
 

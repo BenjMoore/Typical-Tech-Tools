@@ -1,69 +1,47 @@
 ﻿@model TypicalTechTools.Models.AdminUser
 
 @{
-    ViewData["Title"] = "AdminLogin";
-
-    // Retrieve the authentication status
-    bool loggedIn = Context.User.Identity.IsAuthenticated;
-
-    // Retrieve the AccessLevel from the claims (if it exists)
-    var accessLevelClaim = Context.User.FindFirst("AccessLevel");
-    int? accessLevel = accessLevelClaim != null && int.TryParse(accessLevelClaim.Value, out int level) ? level : (int?)null;
-
-    // Check if the user has an admin access level (accessLevel == 0)
-    bool isAdmin = accessLevel == 0;
+    ViewData["Title"] = "Create Account";
 }
 
-@if (loggedIn)
-{
-    <h1 style="text-align:center">Welcome!</h1>
-    <div class="text-center">
-        <form asp-action="Logout" method="post">
-            <button type="submit" class="btn btn-primary">Logout</button>
+<h1>Create Account</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateAccount" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+          
+
+            <div class="form-group">
+                <label asp-for="AccessLevel" class="control-label"></label>
+                <select asp-for="AccessLevel" class="form-control">
+                    <option value="0">Admin</option>
+                    <option value="1">User</option>
+                </select>
+                <span asp-validation-for="AccessLevel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create Account" class="btn btn-primary" />
+                <a class="btn btn-primary ms-2" asp-area="" asp-controller="Admin" asp-action="AdminLogin">Back to Login</a>
+            </div>
         </form>
     </div>
-
-    @if (isAdmin)
-    {
-        <p>Access Level: Admin</p>
-    }
-    else
-    {
-        <p>Access Level: User</p>
-    }
-}
-else
-{
-    <h1>Login</h1>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="AdminLogin" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="UserName" class="control-label"></label>
-                    <input asp-for="UserName" class="form-control" />
-                    <span asp-validation-for="UserName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Password" class="control-label"></label>
-                    <input asp-for="Password" class="form-control" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Login" class="btn btn-primary" />
-                    <a class="btn btn-primary ms-2" asp-area="" asp-controller="Admin" asp-action="CreateAccount">Create Account</a>
-                </div>
-                @Html.HiddenFor(Model => Model.ReturnUrl);
-            </form>
-            <p style="font-weight:600;"> Example User Accounts</p>
-            <br />
-            <p style="font-weight:600;"> User Level Account<br /> Username = Username | Password = Test</p>
-            <br />
-            <p style="font-weight:600;">Admin Level Account<br /> Username = Admin | Password = Test</p>
-        </div>
-    </div>
-}
+</div>
 
 @section Scripts {
     @{
