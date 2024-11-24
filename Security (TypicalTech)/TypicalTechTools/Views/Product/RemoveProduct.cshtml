@@ -3,13 +3,10 @@
 @{
     ViewData["Title"] = "Remove Product";
     bool loggedIn = Context.User.Identity.IsAuthenticated;
-
-    // Retrieve the access level from the claims
-    string accessLevelClaim = Context.User.FindFirst("AccessLevel")?.Value;
-    bool isAdmin = accessLevelClaim != null && Convert.ToInt32(accessLevelClaim) == 0;
+    bool isAdmin = Context.User.IsInRole("Admin");
 }
 
-@if (isAdmin)
+@if (loggedIn && isAdmin)
 {
     <h1>Remove a Product</h1>
     <hr />
@@ -31,7 +28,7 @@
 }
 else
 {
-    <h2>You must be an admin to remove a product.</h2>
+    <h2>You must be logged in as an admin to remove a product.</h2>
 }
 
 @section Scripts {

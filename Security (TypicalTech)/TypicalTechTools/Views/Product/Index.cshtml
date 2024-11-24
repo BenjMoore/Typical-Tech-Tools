@@ -4,10 +4,8 @@
 
     // Retrieve the authentication status and access level from the claims
     bool loggedIn = Context.User.Identity.IsAuthenticated;
-    string accessLevelClaim = Context.User.FindFirst("AccessLevel")?.Value;
-    bool isAdmin = accessLevelClaim != null && Convert.ToInt32(accessLevelClaim) == 0;
+    bool isAdmin = Context.User.IsInRole("Admin");
 }
-
 <div class="text-center">
     <h1>Products</h1>
 </div>

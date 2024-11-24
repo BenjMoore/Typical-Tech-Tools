@@ -33,6 +33,10 @@ namespace TypicalTechTools.Controllers
         [HttpPost]
         public async Task<IActionResult> AdminLogin(AdminUser user)
         {
+            // Sanitize the username and password before processing
+            user.UserName = Sanitizer.Sanitize(user.UserName);
+            user.Password = Sanitizer.Sanitize(user.Password);
+
             bool userAuthorised = _dataAccessLayer.ValidateAdminUser(user.UserName, user.Password);
             if (userAuthorised)
             {
@@ -44,7 +48,6 @@ namespace TypicalTechTools.Controllers
                     new Claim(ClaimTypes.Name, adminUser.UserName),
                     new Claim("UserID", adminUser.UserID.ToString()),
                     new Claim(ClaimTypes.Role, adminUser.Role),
-                    new Claim("AccessLevel", adminUser.AccessLevel.ToString())
                 };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -69,6 +72,7 @@ namespace TypicalTechTools.Controllers
             return View(user);
         }
 
+
         [HttpGet]
         public IActionResult CreateAccount()
         {
@@ -81,6 +85,10 @@ namespace TypicalTechTools.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Sanitize the username and password before processing
+                user.UserName = Sanitizer.Sanitize(user.UserName);
+                user.Password = Sanitizer.Sanitize(user.Password);
+
                 // Check if the username already exists
                 bool usernameExists = _dataAccessLayer.CheckUserNameExists(user.UserName);
                 if (usernameExists)

@@ -4,6 +4,8 @@ using TypicalTechTools.DataAccess;
 using TypicalTechTools.Models;
 using System;
 using Microsoft.AspNetCore.Authorization;
+using TypicalTechTools;
+using System.Security.Claims;
 
 namespace TypicalTools.Controllers
 {
@@ -31,27 +33,47 @@ namespace TypicalTools.Controllers
         {
             return View();
         }
-
-        [ValidateAntiForgeryToken]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         [Authorize]
         public IActionResult AddProduct(Product product)
         {
             if (ModelState.IsValid)
             {
-                product.UpdatedDate = DateTime.Now;
-                _Parser.AddProduct(product);
-                return RedirectToAction("Index");
+                try
+                {
+                    // Sanitize product name, description, and code before saving
+                    product.ProductName = Sanitizer.Sanitize(product.ProductName);
+                    product.ProductDescription = Sanitizer.Sanitize(product.ProductDescription);
+                    product.ProductCode = Sanitizer.Sanitize(product.ProductCode);
+                    product.UpdatedDate = DateTime.Now;
+
+                    // Attempt to add the product
+                    _Parser.AddProduct(product);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "An error occurred while adding the product. Please try again later.");
+
+                    // Return the view with the product data and the error message
+                    return View(product);
+                }
             }
+
+            // Return the view with validation errors if the model is not valid
             return View(product);
         }
+
+
 
         [HttpPost]
         [Authorize]
         public IActionResult RemoveProduct(int productCode)
         {
-            string accessLevelClaim = HttpContext.User.FindFirst("AccessLevel")?.Value;
-            if (string.IsNullOrEmpty(accessLevelClaim) || Convert.ToInt32(accessLevelClaim) != 0)
+            string roleClaim = HttpContext.User.FindFirst(ClaimTypes.Role)?.Value;
+
+            if (string.IsNullOrEmpty(roleClaim) || roleClaim != "Admin")
             {
                 TempData["AlertMessage"] = "You are not authorized to remove products.";
                 return RedirectToAction("Index", "Home");
@@ -72,15 +94,9 @@ namespace TypicalTools.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(string productCode, decimal productPrice)
         {
-            string accessLevelClaim = HttpContext.User.FindFirst("AccessLevel")?.Value;
-            if (string.IsNullOrEmpty(accessLevelClaim) || Convert.ToInt32(accessLevelClaim) != 0)
-            {
-                return Unauthorized(); // Only allow access if access level is 0 (admin)
-            }
-
             var product = _Parser.GetProductByCode(productCode);
             if (product != null)
             {

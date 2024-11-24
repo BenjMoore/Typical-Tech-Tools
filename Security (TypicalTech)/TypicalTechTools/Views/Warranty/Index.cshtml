@@ -1,11 +1,9 @@
 ﻿@model List<TypicalTechTools.Models.FileModel>
 
 @{
-    // Retrieve the authentication status and access level from the cookies
-    string authStatus = Context.Request.Cookies["Authenticated"];
-    int? accessLevel = int.TryParse(Context.Request.Cookies["AccessLevel"], out int level) ? level : (int?)null;
-    bool loggedIn = !string.IsNullOrEmpty(authStatus) && authStatus.Equals("True");
-    bool isAdmin = accessLevel == 0;
+    // Retrieve user ID and admin role from claims
+    string userId = Context.User?.FindFirst("UserID")?.Value ?? string.Empty;
+    bool isAdmin = Context.User.IsInRole("Admin");
 }
 
 <div class="row d-flex justify-content-center">
@@ -15,9 +13,6 @@
             If you have any problems with any of your products we are here to help.
             To lodge a claim please download the warranty claim form using the following link.
         </p>
-
-     
-
         <p>
             <br>Once downloaded please fill out the form with as much detail as possible regarding the problem with your product.
             After completing the form, please lodge your warranty claim using the section below.
@@ -27,9 +22,9 @@
             support your claim, a customer service representative will contact you to request any required images.
         </p>
     </div>
-     
+
     <div class="col-8 card p-3 mt-4">
-        <a asp-controller="Warranty" asp-action="DownloadFile" asp-route-id="1" class="btn btn-primary ml-1">Download</a>
+        <a asp-controller="Warranty" asp-action="DownloadTemplate" class="btn btn-primary ml-1">Download</a>
         <form method="post" enctype="multipart/form-data" asp-controller="Warranty" asp-action="Upload">
             <div class="form-group">
                 <div>

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using TypicalTechTools.Models;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TypicalTechTools.Controllers
 {
@@ -35,6 +36,7 @@ namespace TypicalTechTools.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public IActionResult Upload(IFormFile file)
         {
             if (file != null && file.Length > 0)
@@ -81,6 +83,7 @@ namespace TypicalTechTools.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public IActionResult DownloadFile(int id)
         {
             // Retrieve the file metadata from the database
@@ -127,7 +130,54 @@ namespace TypicalTechTools.Controllers
                 }
             }
         }
+    
+        public IActionResult DownloadTemplate()
+        {
+            // Retrieve the file metadata from the database
+            var warrantyFile = _sqlConnector.GetWarrantyFileById(1);
+            if (warrantyFile == null)
+            {
+                return NotFound();
+            }
 
+            // Construct the full path to the encrypted file in the Uploads directory
+            var encryptedFilePath = $@"wwwroot/Uploads/{warrantyFile.FileName}";
+
+            if (!System.IO.File.Exists(encryptedFilePath))
+            {
+                return NotFound("The requested file does not exist on the server.");
+            }
+
+            // Temporary decrypted file location
+            var tempFilePath = Path.GetTempFileName();
+
+            try
+            {
+                // Decrypt the file
+                TypicalTechTools.DataAccess.Encrypt.DecryptFile(encryptedFilePath, tempFilePath);
+
+                // Read the decrypted file into a byte array
+                var bytes = System.IO.File.ReadAllBytes(tempFilePath);
+
+                // Return the file as a download
+                return File(bytes, "application/octet-stream", warrantyFile.FileName.Replace(".enc", ""));
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (logging implementation is assumed)
+                Console.WriteLine($"Error decrypting file: {ex.Message}");
+                return StatusCode(500, "An error occurred while processing the file.");
+            }
+            finally
+            {
+                // Clean up the temporary file
+                if (System.IO.File.Exists(tempFilePath))
+                {
+                    System.IO.File.Delete(tempFilePath);
+                }
+            }
+        }
+        [Authorize]
 
         public IActionResult Delete(int id)
         {
@@ -142,6 +192,8 @@ namespace TypicalTechTools.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
+
         public IActionResult DeleteConfirmed(int id)
         {
             var warrantyFile = _sqlConnector.GetWarrantyFileById(id);

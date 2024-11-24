@@ -3,15 +3,9 @@
 @{
     ViewData["Title"] = "AdminLogin";
 
-    // Retrieve the authentication status
+    // Authentication status
     bool loggedIn = Context.User.Identity.IsAuthenticated;
-
-    // Retrieve the AccessLevel from the claims (if it exists)
-    var accessLevelClaim = Context.User.FindFirst("AccessLevel");
-    int? accessLevel = accessLevelClaim != null && int.TryParse(accessLevelClaim.Value, out int level) ? level : (int?)null;
-
-    // Check if the user has an admin access level (accessLevel == 0)
-    bool isAdmin = accessLevel == 0;
+    bool isAdmin = Context.User.IsInRole("Admin");
 }
 
 @if (loggedIn)
@@ -47,29 +41,29 @@ else
                 </div>
                 <div class="form-group">
                     <label asp-for="Password" class="control-label"></label>
-                    <input asp-for="Password" class="form-control" />
+                    <input asp-for="Password" type="password" class="form-control" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
+
                 <div class="form-group">
                     <input type="submit" value="Login" class="btn btn-primary" />
                 </div>
                 @Html.HiddenFor(Model => Model.ReturnUrl);
             </form>
-            <p style="font-weight:600;"> Example User Accounts</p>
+            <p style="font-weight:600;">Example User Accounts</p>
             <br />
-            <p style="font-weight:600;"> User Level Account<br /> Username = Username | Password = Test</p>
+            <p style="font-weight:600;">User Level Account<br />Username = Username | Password = Test</p>
             <br />
-            <p style="font-weight:600;">Admin Level Account<br /> Username = Admin | Password = Test</p>
+            <p style="font-weight:600;">Admin Level Account<br />Username = Admin | Password = Test</p>
 
             <!-- Button linking to Create Account page -->
             <div class="form-group mt-3">
-x            </div>
+                <a asp-action="CreateAccount" class="btn btn-secondary">Create Account</a>
+            </div>
+
         </div>
     </div>
 }
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
 }

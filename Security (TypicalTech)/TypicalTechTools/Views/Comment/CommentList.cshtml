@@ -6,9 +6,9 @@
 
     int productCode = 0;
 
-    // Retrieve user claims for UserID and AccessLevel
-    string userId = Context.User?.FindFirst("UserID")?.Value ?? string.Empty; 
-    string accessLevel = Context.User?.FindFirst("AccessLevel")?.Value ?? string.Empty;
+    // Retrieve user claims for UserID and check admin role
+    string userId = Context.User?.FindFirst("UserID")?.Value ?? string.Empty;
+    bool isAdmin = Context.User.IsInRole("Admin");
 }
 
 @if (TempData["AlertMessage"] != null)
@@ -46,8 +46,8 @@
                 </td>
                 <td>
                     @{
-                        // Check if user can edit or delete based on UserID and AccessLevel
-                        bool canEditOrDelete = (item.UserID == userId) || (accessLevel == "0");
+                        // Check if the user can edit or delete based on UserID or admin role
+                        bool canEditOrDelete = (item.UserID == userId) || isAdmin;
                     }
                     @if (canEditOrDelete)
                     {

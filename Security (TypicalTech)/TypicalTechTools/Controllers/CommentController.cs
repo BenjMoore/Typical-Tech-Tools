@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using TypicalTechTools;
 
 namespace TypicalTools.Controllers
 {
@@ -21,6 +23,8 @@ namespace TypicalTools.Controllers
         }
 
         [HttpGet]
+        [Authorize]
+
         public IActionResult CommentList(string productCode)
         {
             if (string.IsNullOrEmpty(productCode))
@@ -36,6 +40,8 @@ namespace TypicalTools.Controllers
         }
 
         [HttpGet]
+        [Authorize]
+
         public IActionResult AddComment(string productCode)
         {
             if (string.IsNullOrEmpty(productCode))
@@ -53,10 +59,13 @@ namespace TypicalTools.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
+        [Authorize]
         public IActionResult AddComment(Comment comment)
         {
+            // Set the ProductCode from the session
             comment.ProductCode = HttpContext.Session.GetString("ProductCode");
 
+            // Retrieve the UserID from the claims
             string userIdClaim = HttpContext.User.FindFirst("UserID")?.Value;
             if (string.IsNullOrEmpty(userIdClaim))
             {
@@ -64,12 +73,17 @@ namespace TypicalTools.Controllers
                 return View(comment);
             }
 
+            // Validate the CommentText field
             if (string.IsNullOrWhiteSpace(comment.CommentText) || comment.CommentText.Length > 500)
             {
                 ModelState.AddModelError("", "Comment content is required and should be 500 characters or less.");
                 return View(comment);
             }
 
+            // Sanitize the comment text before storing it
+            comment.CommentText = Sanitizer.Sanitize(comment.CommentText);
+
+            // Set the UserID and CreatedDate
             comment.UserID = userIdClaim;
             comment.CreatedDate = DateTime.Now;
 
@@ -87,11 +101,13 @@ namespace TypicalTools.Controllers
             return View(comment);
         }
 
+
         [HttpGet]
+        [Authorize]
         public IActionResult EditComment(int commentId)
         {
             string userIdClaim = HttpContext.User.FindFirst("UserID")?.Value;
-            string accessLevelClaim = HttpContext.User.FindFirst("AccessLevel")?.Value;
+            string accessLevelClaim = HttpContext.User.FindFirst(ClaimTypes.Role)?.Value;
 
             if (string.IsNullOrEmpty(userIdClaim))
             {
@@ -106,7 +122,7 @@ namespace TypicalTools.Controllers
                 return RedirectToAction("CommentList");
             }
 
-            if (accessLevelClaim == "0" || comment.UserID == userIdClaim)
+            if (accessLevelClaim == "Admin" || comment.UserID == userIdClaim)
             {
                 return View(comment);
             }
@@ -117,6 +133,7 @@ namespace TypicalTools.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
+        [Authorize]
         public IActionResult SaveEdit(Comment comment)
         {
             if (comment == null)
@@ -124,11 +141,15 @@ namespace TypicalTools.Controllers
                 return RedirectToAction("Index", "Product");
             }
 
+            // Validate the CommentText field
             if (string.IsNullOrWhiteSpace(comment.CommentText) || comment.CommentText.Length > 500)
             {
                 ModelState.AddModelError("", "Comment text is required and should be 500 characters or less.");
                 return View(comment);
             }
+
+            // Sanitize the comment text before saving it
+            comment.CommentText = Sanitizer.Sanitize(comment.CommentText);
 
             try
             {
@@ -143,12 +164,14 @@ namespace TypicalTools.Controllers
             return RedirectToAction("CommentList", new { productCode = comment.ProductCode });
         }
 
+
         [ValidateAntiForgeryToken]
         [HttpPost]
+        [Authorize]
         public IActionResult RemoveComment(int commentId)
         {
             string userIdClaim = HttpContext.User.FindFirst("UserID")?.Value;
-            string accessLevelClaim = HttpContext.User.FindFirst("AccessLevel")?.Value;
+            string roleClaim = HttpContext.User.FindFirst(ClaimTypes.Role)?.Value;
 
             if (string.IsNullOrEmpty(userIdClaim))
             {
@@ -156,6 +179,7 @@ namespace TypicalTools.Controllers
                 return RedirectToAction("CommentList");
             }
 
+            // Retrieve the comment
             Comment comment = _DBAccess.GetComment(commentId);
             if (comment == null)
             {
@@ -163,8 +187,10 @@ namespace TypicalTools.Controllers
                 return RedirectToAction("CommentList");
             }
 
-            if (accessLevelClaim == "0" || comment.UserID == userIdClaim)
+            // Role-based authorization
+            if (roleClaim == "Admin" || roleClaim == "User" || comment.UserID == userIdClaim)
             {
+                // Admins and users can delete their own comments, but admins can delete any comment
                 _DBAccess.DeleteComment(commentId);
                 return RedirectToAction("CommentList", new { productCode = comment.ProductCode });
             }

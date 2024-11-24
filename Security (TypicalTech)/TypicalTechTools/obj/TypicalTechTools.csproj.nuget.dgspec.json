@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[2.4.0, )"
             },
+            "HtmlSanitizer": {
+              "target": "Package",
+              "version": "[8.1.870, )"
+            },
             "Microsoft.AspNetCore.Http": {
               "target": "Package",
               "version": "[2.2.2, )"

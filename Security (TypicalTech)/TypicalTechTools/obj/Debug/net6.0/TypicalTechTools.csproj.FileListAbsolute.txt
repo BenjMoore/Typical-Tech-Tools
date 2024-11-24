@@ -2634,3 +2634,7 @@ C:\Users\Benjamin Moore\Github\ICTPRG537\Security (TypicalTech)\TypicalTechTools
 C:\Users\Benjamin Moore\Github\ICTPRG537\Security (TypicalTech)\TypicalTechTools\obj\Debug\net6.0\TypicalTechTools.pdb
 C:\Users\Benjamin Moore\Github\ICTPRG537\Security (TypicalTech)\TypicalTechTools\obj\Debug\net6.0\TypicalTechTools.genruntimeconfig.cache
 C:\Users\Benjamin Moore\Github\ICTPRG537\Security (TypicalTech)\TypicalTechTools\obj\Debug\net6.0\ref\TypicalTechTools.dll
+C:\Users\Benjamin Moore\Github\ICTPRG537\Security (TypicalTech)\TypicalTechTools\bin\Debug\net6.0\AngleSharp.dll
+C:\Users\Benjamin Moore\Github\ICTPRG537\Security (TypicalTech)\TypicalTechTools\bin\Debug\net6.0\AngleSharp.Css.dll
+C:\Users\Benjamin Moore\Github\ICTPRG537\Security (TypicalTech)\TypicalTechTools\bin\Debug\net6.0\HtmlSanitizer.dll
+C:\Users\Benjamin Moore\Github\ICTPRG537\Security (TypicalTech)\TypicalTechTools\bin\Debug\net6.0\System.Collections.Immutable.dll

@@ -2,21 +2,20 @@
 
 @{
     ViewData["Title"] = "Add Product";
-    string accessLevelClaim = Context.User.FindFirst("AccessLevel")?.Value;
-    int loggedIn = 1;
-
-    // Check if the user is admin (accessLevel == 0)
-    if (accessLevelClaim != null && Convert.ToInt32(accessLevelClaim) == 0)
-    {
-        loggedIn = 0;
-    }
-    else
-    {
-        loggedIn = 1;
-    }
+    bool loggedIn = Context.User.Identity.IsAuthenticated;
+    bool isAdmin = Context.User.IsInRole("Admin");
+}
+@if (ViewData.ModelState.ErrorCount > 0)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
 }
 
-@if (loggedIn == 0)
+@if (loggedIn && isAdmin)
 {
     <h1>Add a New Product</h1>
     <hr />
@@ -53,9 +52,11 @@
 }
 else
 {
-    <h2>You must be admin in to add a product.</h2>
+    <h2>You must be logged in as an admin to add a product.</h2>
 }
 
 @section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
