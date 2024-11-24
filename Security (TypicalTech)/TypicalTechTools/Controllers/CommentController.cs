@@ -22,9 +22,7 @@ namespace TypicalTools.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        [Authorize]
-
+        [HttpGet]    
         public IActionResult CommentList(string productCode)
         {
             if (string.IsNullOrEmpty(productCode))

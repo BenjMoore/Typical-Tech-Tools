@@ -119,8 +119,8 @@ namespace TypicalTechTools.Controllers
         public IActionResult AdminDashboard()
         {
             // Check if the user is authenticated and if they have the correct role/claims
-            var accessLevelClaim = User.FindFirst("AccessLevel")?.Value;
-            if (accessLevelClaim == null || int.TryParse(accessLevelClaim, out int accessLevel) && accessLevel != 0)
+            var accessLevelClaim = User.FindFirst(ClaimTypes.Role)?.Value;
+            if (accessLevelClaim == null || accessLevelClaim != "Admin")
             {
                 return RedirectToAction("AdminLogin");
             }
