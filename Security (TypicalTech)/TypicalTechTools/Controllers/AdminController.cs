@@ -44,11 +44,11 @@ namespace TypicalTechTools.Controllers
 
                 // Create claims based on the user info
                 var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, adminUser.UserName),
-                    new Claim("UserID", adminUser.UserID.ToString()),
-                    new Claim(ClaimTypes.Role, adminUser.Role),
-                };
+        {
+            new Claim(ClaimTypes.Name, adminUser.UserName),
+            new Claim("UserID", adminUser.UserID.ToString()),
+            new Claim(ClaimTypes.Role, adminUser.Role),
+        };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -72,11 +72,10 @@ namespace TypicalTechTools.Controllers
             return View(user);
         }
 
-
         [HttpGet]
         public IActionResult CreateAccount()
         {
-            return View();
+            return PartialView("_CreateAccountPartial"); // Return a partial view for the modal
         }
 
         [ValidateAntiForgeryToken]
@@ -100,8 +99,8 @@ namespace TypicalTechTools.Controllers
                 // Create the new admin user
                 _dataAccessLayer.CreateAdminUser(user);
 
-                // Redirect to the login page or wherever you'd like to navigate after account creation
-                return RedirectToAction("AdminLogin");
+                // Close modal and refresh the login page or redirect
+                return Json(new { success = true });
             }
 
             return View(user); // Return the view with validation errors if model is not valid

@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Admin\CreateAccount.cshtml" />
+    <Content Remove="Views\Admin\Create.cshtml" />
     <Content Remove="wwwroot\data\Products.csv" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Admin\CreateAccount.cshtml" />
+    <None Include="Views\Admin\Create.cshtml" />
     <None Include="wwwroot\data\Products.csv" />
   </ItemGroup>
 
@@ -24,14 +24,6 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Views\Admin\CreateAccount.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Views\Admin\CreateAccount.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

@@ -56,14 +56,47 @@ else
             <br />
             <p style="font-weight:600;">Admin Level Account<br />Username = Admin | Password = Test</p>
 
-            <!-- Button linking to Create Account page -->
+            <!-- Button linking to Create Account modal -->
             <div class="form-group mt-3">
-                <a asp-action="CreateAccount" class="btn btn-secondary">Create Account</a>
+                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#createAccountModal">Create Account</button>
             </div>
 
         </div>
     </div>
 }
 
-@section Scripts {
-}
+<!-- Modal for Create Account -->
+<div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="createAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createAccountModalLabel">Create Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="CreateAccount" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="UserName" class="control-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" type="password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Create Account" class="btn btn-primary" />
+                        <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

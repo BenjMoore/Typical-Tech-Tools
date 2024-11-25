@@ -70,11 +70,11 @@ namespace TypicalTechTools
             string guestPassword = BCrypt.Net.BCrypt.HashPassword("Test");
 
             string query = @"
-            INSERT INTO Login (UserName, Password, AccessLevel, Role)
+            INSERT INTO Login (UserName, Password, Role)
             VALUES
-                ('Admin', @AdminPassword, '0', 'Admin'),
-                ('Username', @UserPassword, '1','User'),
-                ('Guest', @guestPassword, '2','Guest');
+                ('Admin', @AdminPassword, 'Admin'),
+                ('Username', @UserPassword,'User'),
+                ('Guest', @guestPassword,'Guest');
             ";
 
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -198,8 +198,7 @@ namespace TypicalTechTools
                     CREATE TABLE Login (
                         UserID INT PRIMARY KEY IDENTITY,
                         UserName VARCHAR(50) NOT NULL,
-                        Password NVARCHAR(MAX) NOT NULL,
-                        AccessLevel VARCHAR(50) NOT NULL,
+                        Password NVARCHAR(MAX) NOT NULL,                       
                         Role VARCHAR(50) NOT NULL
                     );
 
@@ -244,7 +243,7 @@ namespace TypicalTechTools
             using (SqlConnection connection = new SqlConnection(DboConnectionString))
             {
                 connection.Open();
-                string query = "SELECT UserName, Password, UserID, AccessLevel, Role FROM Login WHERE UserName = @UserName";
+                string query = "SELECT UserName, Password, UserID, Role FROM Login WHERE UserName = @UserName";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -259,7 +258,6 @@ namespace TypicalTechTools
                                 UserName = reader["UserName"].ToString(),
                                 Password = reader["Password"].ToString(),
                                 UserID = Convert.ToInt32(reader["UserID"]),
-                                AccessLevel = Convert.ToInt32(reader["AccessLevel"]),
                                 Role = reader["Role"].ToString()
                             };
                         }
@@ -277,15 +275,13 @@ namespace TypicalTechTools
                 using (SqlConnection connection = new SqlConnection(DboConnectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Login (UserName, Password, UserID, AccessLevel, Role) VALUES (@UserName, @Password, @UserID, @AccessLevel, @Role)";
+                    string query = "INSERT INTO Login (UserName, Password, Role) VALUES (@UserName, @Password, @Role)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
                         command.Parameters.AddWithValue("@UserName", user.UserName);
                         command.Parameters.AddWithValue("@Password", hashedPassword);
-                        command.Parameters.AddWithValue("@UserID", user.UserID);
-                        command.Parameters.AddWithValue("@AccessLevel", user.AccessLevel);
                         command.Parameters.AddWithValue("@Role", user.Role);
 
                         int rowsAffected = command.ExecuteNonQuery();
