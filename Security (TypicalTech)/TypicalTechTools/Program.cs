@@ -24,7 +24,9 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSingleton<DataAccessLayer>();
 builder.Services.AddSingleton<SQLConnector>();
-builder.Services.AddScoped<Sanitizer>();
+builder.Services.AddScoped<Sanitizer>(); 
+builder.Services.AddScoped<FileUploaderService>();
+builder.Services.AddScoped<Encrypt>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(
     options => {
@@ -51,10 +53,18 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-// Custom Middleware (inline)
 app.Use(async (context, next) =>
 {
-    //context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; img-src 'self' https://secure.example.net https://fastly.example.net; script-src 'self' https://cdnjs.cloudflare.com");
+   /* context.Response.Headers.Add("Content-Security-Policy",
+        "default-src 'self'; " +
+        "img-src 'self'; " +
+        "script-src 'self'; " +
+        "style-src 'self'; " +
+        "font-src 'self'; " +
+        "connect-src 'self'; " +
+        "object-src 'none'; " +
+        "base-uri 'self'; " +
+        "frame-ancestors 'none';");*/
     context.Response.Headers.Add("Referrer-Policy", "no-referrer");
     context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
     context.Response.Headers.Add("X-Frame-Options", "DENY");

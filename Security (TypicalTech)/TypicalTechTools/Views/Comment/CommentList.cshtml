@@ -3,10 +3,7 @@
 
 @{
     ViewData["Title"] = "CommentList";
-
     int productCode = 0;
-
-    // Retrieve user claims for UserID and check admin role
     string userId = Context.User?.FindFirst("UserID")?.Value ?? string.Empty;
     bool isAdmin = Context.User.IsInRole("Admin");
 }
@@ -46,7 +43,6 @@
                 </td>
                 <td>
                     @{
-                        // Check if the user can edit or delete based on UserID or admin role
                         bool canEditOrDelete = (item.UserID == userId) || isAdmin;
                     }
                     @if (canEditOrDelete)

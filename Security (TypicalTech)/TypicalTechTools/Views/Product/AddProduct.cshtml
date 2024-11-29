@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Add Product";
-    bool loggedIn = Context.User.Identity.IsAuthenticated;
     bool isAdmin = Context.User.IsInRole("Admin");
 }
 @if (ViewData.ModelState.ErrorCount > 0)
@@ -15,7 +14,7 @@
     </div>
 }
 
-@if (loggedIn && isAdmin)
+@if (isAdmin)
 {
     <h1>Add a New Product</h1>
     <hr />

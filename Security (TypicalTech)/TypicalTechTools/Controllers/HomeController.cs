@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using TypicalTechTools.DataAccess;
 using TypicalTechTools.Models;
 
 namespace TypicalTechTools.Controllers
@@ -8,10 +9,12 @@ namespace TypicalTechTools.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly FileUploaderService _fileUploader;  
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, FileUploaderService fileUpdater)
         {
             _logger = logger;
+            _fileUploader = fileUpdater;
         }
         //[Authorize]
         public IActionResult Index()

@@ -39,7 +39,6 @@ namespace TypicalTools.Controllers
 
         [HttpGet]
         [Authorize]
-
         public IActionResult AddComment(string productCode)
         {
             if (string.IsNullOrEmpty(productCode))
@@ -65,12 +64,13 @@ namespace TypicalTools.Controllers
 
             // Retrieve the UserID from the claims
             string userIdClaim = HttpContext.User.FindFirst("UserID")?.Value;
+            /*
             if (string.IsNullOrEmpty(userIdClaim))
             {
                 ModelState.AddModelError("", "User is not authenticated.");
                 return View(comment);
             }
-
+            */
             // Validate the CommentText field
             if (string.IsNullOrWhiteSpace(comment.CommentText) || comment.CommentText.Length > 500)
             {
@@ -88,7 +88,6 @@ namespace TypicalTools.Controllers
             try
             {
                 _DBAccess.AddComment(comment);
-
                 return RedirectToAction("CommentList", new { productCode = comment.ProductCode });
             }
             catch (Exception ex)
@@ -106,12 +105,6 @@ namespace TypicalTools.Controllers
         {
             string userIdClaim = HttpContext.User.FindFirst("UserID")?.Value;
             string accessLevelClaim = HttpContext.User.FindFirst(ClaimTypes.Role)?.Value;
-
-            if (string.IsNullOrEmpty(userIdClaim))
-            {
-                TempData["AlertMessage"] = "User Not Logged in";
-                return RedirectToAction("CommentList");
-            }
 
             Comment comment = _DBAccess.GetComment(commentId);
             if (comment == null)
@@ -171,12 +164,6 @@ namespace TypicalTools.Controllers
             string userIdClaim = HttpContext.User.FindFirst("UserID")?.Value;
             string roleClaim = HttpContext.User.FindFirst(ClaimTypes.Role)?.Value;
 
-            if (string.IsNullOrEmpty(userIdClaim))
-            {
-                TempData["AlertMessage"] = "User Not Logged in";
-                return RedirectToAction("CommentList");
-            }
-
             // Retrieve the comment
             Comment comment = _DBAccess.GetComment(commentId);
             if (comment == null)
@@ -185,10 +172,8 @@ namespace TypicalTools.Controllers
                 return RedirectToAction("CommentList");
             }
 
-            // Role-based authorization
-            if (roleClaim == "Admin" || roleClaim == "User" || comment.UserID == userIdClaim)
+            if (roleClaim == "Admin" || comment.UserID == userIdClaim)
             {
-                // Admins and users can delete their own comments, but admins can delete any comment
                 _DBAccess.DeleteComment(commentId);
                 return RedirectToAction("CommentList", new { productCode = comment.ProductCode });
             }

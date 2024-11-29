@@ -28,35 +28,30 @@ namespace TypicalTools.Controllers
 
         // Restrict to authenticated users
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddProduct()
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddProduct(Product product)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    // Sanitize product name, description, and code before saving
                     product.ProductName = Sanitizer.Sanitize(product.ProductName);
                     product.ProductDescription = Sanitizer.Sanitize(product.ProductDescription);
                     product.ProductCode = Sanitizer.Sanitize(product.ProductCode);
                     product.UpdatedDate = DateTime.Now;
-
-                    // Attempt to add the product
                     _Parser.AddProduct(product);
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "An error occurred while adding the product. Please try again later.");
-
-                    // Return the view with the product data and the error message
+                    ModelState.AddModelError("", "An error occurred while adding the product. Make sure the product ID is unique.");
                     return View(product);
                 }
             }
@@ -68,17 +63,9 @@ namespace TypicalTools.Controllers
 
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         public IActionResult RemoveProduct(int productCode)
         {
-            string roleClaim = HttpContext.User.FindFirst(ClaimTypes.Role)?.Value;
-
-            if (string.IsNullOrEmpty(roleClaim) || roleClaim != "Admin")
-            {
-                TempData["AlertMessage"] = "You are not authorized to remove products.";
-                return RedirectToAction("Index", "Home");
-            }
-
             bool isRemoved = _Parser.RemoveProduct(productCode);
 
             if (isRemoved)

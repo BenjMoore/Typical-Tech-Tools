@@ -2,12 +2,8 @@
 
 @{
     ViewData["Title"] = "Remove Product";
-    bool loggedIn = Context.User.Identity.IsAuthenticated;
-    bool isAdmin = Context.User.IsInRole("Admin");
 }
 
-@if (loggedIn && isAdmin)
-{
     <h1>Remove a Product</h1>
     <hr />
     <div class="row">
@@ -25,11 +21,7 @@
             </form>
         </div>
     </div>
-}
-else
-{
-    <h2>You must be logged in as an admin to remove a product.</h2>
-}
+
 
 @section Scripts {
     @{

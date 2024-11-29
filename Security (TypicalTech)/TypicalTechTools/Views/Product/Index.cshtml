@@ -2,20 +2,17 @@
 @{
     ViewData["Title"] = "Home Page";
 
-    // Retrieve the authentication status and access level from the claims
-    bool loggedIn = Context.User.Identity.IsAuthenticated;
     bool isAdmin = Context.User.IsInRole("Admin");
 }
 <div class="text-center">
     <h1>Products</h1>
 </div>
 
-@if (loggedIn && isAdmin)
-{
+
     <div class="text-right mb-3">
         @Html.ActionLink("Add New Product", "AddProduct", "Product", new { }, new { @class = "btn btn-primary" })
     </div>
-}
+
 @if (TempData["AlertMessage"] != null)
 {
     <script type="text/javascript">
@@ -35,7 +32,7 @@
             <div>
                 @Html.ActionLink("Comments", "CommentList", "Comment", new { productCode = product.ProductCode }, new { @class = "btn btn-primary m-2" })
             </div>
-            @if (loggedIn && isAdmin)
+            @if (isAdmin)
             {
                 <form asp-action="Edit" asp-controller="Product" method="post" class="mt-2">
                     <input type="hidden" name="ProductCode" value="@product.ProductCode" />

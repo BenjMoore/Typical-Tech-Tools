@@ -1,8 +1,7 @@
 ﻿@model List<TypicalTechTools.Models.FileModel>
 
 @{
-    // Retrieve user ID and admin role from claims
-    string userId = Context.User?.FindFirst("UserID")?.Value ?? string.Empty;
+    bool isloggedin = Context.User.Identity.IsAuthenticated;
     bool isAdmin = Context.User.IsInRole("Admin");
 }
 
@@ -25,19 +24,22 @@
 
     <div class="col-8 card p-3 mt-4">
         <a asp-controller="Warranty" asp-action="DownloadTemplate" class="btn btn-primary ml-1">Download</a>
-        <form method="post" enctype="multipart/form-data" asp-controller="Warranty" asp-action="Upload">
-            <div class="form-group">
-                <div>
-                    <h5>Upload Completed Forms Here</h5>
-                    <input type="file" name="file" />
+        @if (isloggedin)
+        {
+            <form method="post" enctype="multipart/form-data" asp-controller="Warranty" asp-action="Upload">
+                <div class="form-group">
+                    <div>
+                        <h5>Upload Completed Forms Here</h5>
+                        <input type="file" name="file" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input type="submit" value="Upload" class="btn btn-info" />
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="submit" value="Upload" class="btn btn-info" />
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        }
     </div>
 
     @if (isAdmin)

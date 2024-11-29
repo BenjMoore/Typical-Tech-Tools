@@ -1,137 +1,68 @@
-﻿    using System;
-    using System.IO;
-    using System.Security.Cryptography;
-    using System.Text;
+﻿using AngleSharp.Dom;
+using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
-    namespace TypicalTechTools.DataAccess
+   namespace TypicalTechTools.DataAccess
+   {
+    public class Encrypt
     {
-        public class Encrypt
+        string _secretKey;
+      public Encrypt(IConfiguration config)
         {
-            private static readonly string KeyFilePath = "keyfile.bin"; // Path to store the encrypted key and IV
-            private static readonly string Password = "Hgtr8#7dbvit(jsiN!"; // Use a secure password or passphrase
-
-        /// <summary>
-        /// Encrypts a file using AES encryption.
-        /// </summary>
-        public static void EncryptFile(string inputFilePath, string outputFilePath)
+            _secretKey = config["SecretKey"];
+        }
+        public byte[] EncryptByteArray(byte[] fileData)
         {
-            EnsureKeyAndIV();
-            (byte[] key, byte[] iv) = LoadKeyAndIV();
-
-            using (Aes aes = Aes.Create())
+            // Create an AES algorithm class (This will generate our Initialization Vector on creation)
+            using (var aesAlg = Aes.Create())
             {
-                aes.Key = key;
-                aes.IV = iv;
+                // Convert our secret key to a byte array
+                aesAlg.Key = System.Text.Encoding.UTF8.GetBytes(_secretKey);
 
-                using (FileStream outputFileStream = new FileStream(outputFilePath, FileMode.Create))
-                using (CryptoStream cryptoStream = new CryptoStream(outputFileStream, aes.CreateEncryptor(), CryptoStreamMode.Write))
-                using (FileStream inputFileStream = new FileStream(inputFilePath, FileMode.Open))
+                // Create an encryptor using our key and initialization vector (IV) to encrypt the data
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+                // Final memory stream to hold the new file data
+                using (var memStream = new MemoryStream())
                 {
-                    inputFileStream.CopyTo(cryptoStream);
-                    cryptoStream.FlushFinalBlock();
+                    // Add the IV to the start of the byte array before we add the file data
+                    memStream.Write(aesAlg.IV, 0, 16);
+
+                    // Create a crypto stream which will pass the data back to the memory stream using our encryptor
+                    using (var cryptoStream = new CryptoStream(memStream, encryptor, CryptoStreamMode.Write))
+                    {
+                        // Pass our file data through the crypto stream
+                        cryptoStream.Write(fileData, 0, fileData.Length);
+                        cryptoStream.FlushFinalBlock();
+
+                        // Return the final memory stream data
+                        return memStream.ToArray();
+                    }
                 }
             }
         }
 
 
-        /// <summary>
-        /// Decrypts an encrypted file using AES encryption.
-        /// </summary>
-        public static void DecryptFile(string inputFilePath, string outputFilePath)
+        public byte[] DecryptByteArray(byte[] encryptedData)
         {
-            EnsureKeyAndIV();
-            (byte[] key, byte[] iv) = LoadKeyAndIV();
-
-            using (Aes aes = Aes.Create())
-            {
-                aes.Key = key;
-                aes.IV = iv;
-
-                try
+        using (var aesAlg = Aes.Create())
+        {
+            aesAlg.Key = System.Text.Encoding.UTF8.GetBytes(_secretKey);
+            byte[] IV = new byte[16];
+                Array.Copy(encryptedData, IV, IV.Length);
+                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, IV);
+                using (var memStream = new MemoryStream())
                 {
-                    using (FileStream inputFileStream = new FileStream(inputFilePath, FileMode.Open))
-                    using (CryptoStream cryptoStream = new CryptoStream(inputFileStream, aes.CreateDecryptor(), CryptoStreamMode.Read))
-                    using (FileStream outputFileStream = new FileStream(outputFilePath, FileMode.Create))
+                    using(var cryptoStream = new CryptoStream(memStream, decryptor, CryptoStreamMode.Write))
                     {
-                        cryptoStream.CopyTo(outputFileStream);
+                        cryptoStream.Write(encryptedData, IV.Length, encryptedData.Length - IV.Length);
+                        cryptoStream.FlushFinalBlock();
+                        return memStream.ToArray();
                     }
                 }
-                catch (CryptographicException ex)
-                {
-                    throw new CryptographicException("Decryption failed. Ensure the correct key/IV are used and the file is unaltered.", ex);
-                }
-            }
         }
-
-        /// <summary>
-        /// Ensures the key and IV exist, generating and saving them if not already present.
-        /// </summary>
-        private static void EnsureKeyAndIV()
-            {
-                if (!File.Exists(KeyFilePath))
-                {
-                    using (Aes aes = Aes.Create())
-                    {
-                        SaveKeyAndIV(aes.Key, aes.IV);
-                    }
-                }
-            }
-
-            /// <summary>
-            /// Loads the key and IV from the key file.
-            /// </summary>
-            private static (byte[] key, byte[] iv) LoadKeyAndIV()
-            {
-                byte[] encryptedKeyAndIV = File.ReadAllBytes(KeyFilePath);
-
-                using (Aes aes = Aes.Create())
-                {
-                    using (ICryptoTransform decryptor = aes.CreateDecryptor(DeriveKey(), new byte[16])) 
-                    using (MemoryStream ms = new MemoryStream(encryptedKeyAndIV))
-                    using (CryptoStream cryptoStream = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
-                    using (BinaryReader reader = new BinaryReader(cryptoStream))
-                    {
-                        byte[] key = reader.ReadBytes(32); // 256-bit key
-                        byte[] iv = reader.ReadBytes(16);  // 128-bit IV
-                        return (key, iv);
-                    }
-                }
-            }
-
-            /// <summary>
-            /// Saves the key and IV to a secure key file.
-            /// </summary>
-            private static void SaveKeyAndIV(byte[] key, byte[] iv)
-            {
-                using (Aes aes = Aes.Create())
-                using (ICryptoTransform encryptor = aes.CreateEncryptor(DeriveKey(), new byte[16])) // 16-byte zero IV for simplicity
-                {
-                    // Create the MemoryStream outside the using block so it can be accessed later
-                    using (var ms = new MemoryStream())
-                    {
-                        using (var cryptoStream = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
-                        using (var writer = new BinaryWriter(cryptoStream))
-                        {
-                            writer.Write(key);
-                            writer.Write(iv);
-                        }
-
-                        // Write the encrypted key and IV to the file after closing the streams
-                        File.WriteAllBytes(KeyFilePath, ms.ToArray());
-                    }
-                }
-            }
-
-
-            /// <summary>
-            /// Derives a key from the password for encrypting/decrypting the key file.
-            /// </summary>
-            private static byte[] DeriveKey()
-            {
-                using (Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(Password, Encoding.UTF8.GetBytes("SaltValue"), 100000))
-                {
-                    return pdb.GetBytes(32); // 256-bit key
-                }
-            }
         }
     }
+}

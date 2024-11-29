@@ -15,7 +15,7 @@ namespace TypicalTechTools.Controllers
  * This controller handles the authentication and authorization for admin users. 
  * It ensures secure login, role-based access control (RBAC), and account management.
  *
- * 1. **Authentication**:
+ * 1. Authentication:
  *    - Admins log in via the `AdminLogin` GET and POST actions.
  *    - User credentials (username and password) are sanitized to prevent injection attacks.
  *    - Login credentials are validated against data stored in an MSSQL database.
@@ -25,20 +25,20 @@ namespace TypicalTechTools.Controllers
  *      - A custom claim (`UserID`): Uniquely identifies the user.
  *    - Claims are signed and stored using cookie-based authentication for secure session tracking.
  *
- * 2. **Authorization**:
+ * 2. Authorization:
  *    - Role-based access control is enforced using claims.
  *    - The `[Authorize]` attribute protects specific methods, ensuring only authenticated users can access them.
  *    - For role-specific access, e.g., `AdminDashboard`, the `ClaimTypes.Role` value is validated.
  *    - Backend validation ensures that sensitive actions cannot be accessed without the correct role, even if hidden in the UI.
  *
- * 3. **Account Management**:
+ * 3. Account Management:
  *    - The `CreateAccount` action allows admins to register new accounts via a modal form.
  *    - Input is validated to ensure:
  *      - Usernames are unique (checked against the database).
  *      - Passwords meet defined security standards.
  *    - New accounts are securely added to the MSSQL database via the DataAccessLayer (DAL).
  *
- * 4. **Security Features**:
+ * 4. Security Features:
  *    - Cross-Site Request Forgery (CSRF) protection is enabled using `[ValidateAntiForgeryToken]`.
  *    - All sensitive user data is sanitized and securely handled to prevent injection attacks.
  *    - Sessions are protected with encrypted and signed cookies, ensuring tamper-proof authentication.
@@ -70,8 +70,8 @@ namespace TypicalTechTools.Controllers
         public async Task<IActionResult> AdminLogin(AdminUser user)
         {
             // Sanitize the username and password before processing
-            user.UserName = Sanitizer.Sanitize(user.UserName);
-            user.Password = Sanitizer.Sanitize(user.Password);
+            user.UserName = Sanitizer.Sanitize(user.UserName.Trim());
+            user.Password = Sanitizer.Sanitize(user.Password.Trim());
 
             bool userAuthorised = _dataAccessLayer.ValidateAdminUser(user.UserName, user.Password);
             if (userAuthorised)
@@ -113,34 +113,33 @@ namespace TypicalTechTools.Controllers
         {
             return PartialView("_CreateAccountPartial"); // Return a partial view for the modal
         }
-
         [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult CreateAccount(AdminUser user)
         {
             if (ModelState.IsValid)
             {
-                // Sanitize the username and password before processing
-                user.UserName = Sanitizer.Sanitize(user.UserName);
-                user.Password = Sanitizer.Sanitize(user.Password);
+                // Trim and sanitize the username and password before processing
+                user.UserName = Sanitizer.Sanitize(user.UserName?.Trim());
+                user.Password = Sanitizer.Sanitize(user.Password?.Trim());
 
                 // Check if the username already exists
                 bool usernameExists = _dataAccessLayer.CheckUserNameExists(user.UserName);
                 if (usernameExists)
                 {
                     ModelState.AddModelError(string.Empty, "Username already exists.");
-                    return View(user);
                 }
-
-                // Create the new admin user
-                _dataAccessLayer.CreateAdminUser(user);
-
-                // Close modal and refresh the login page or redirect
-                return Json(new { success = true });
+                else
+                {
+                    // Create the new admin user
+                    _dataAccessLayer.CreateAdminUser(user);
+                }
             }
 
-            return View(user); // Return the view with validation errors if model is not valid
+            // Redirect to the AdminLogin page regardless of outcome
+            return RedirectToAction("AdminLogin");
         }
+
 
         [ValidateAntiForgeryToken]
         [HttpPost]

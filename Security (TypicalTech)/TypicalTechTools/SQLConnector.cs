@@ -127,10 +127,10 @@ namespace TypicalTechTools
         private void InsertWarrantyFiles(SqlConnection connection)
         {
             string query = @"
-            IF NOT EXISTS (SELECT * FROM WarrantyFiles WHERE FileName = 'TypicalTools_WarrantyForm.docx.enc')
+            IF NOT EXISTS (SELECT * FROM WarrantyFiles WHERE FileName = 'TypicalTools_WarrantyForm.docx')
             BEGIN
                 INSERT INTO WarrantyFiles (FileName, FilePath, UploadedDate)
-                VALUES ('TypicalTools_WarrantyForm.docx.enc', 'wwwroot/Uploads/TypicalTools_WarrantyForm.docx.enc', GETDATE());
+                VALUES ('TypicalTools_WarrantyForm.docx', 'wwwroot/Uploads/TypicalTools_WarrantyForm.docx', GETDATE());
             END;"
             ;
 
