@@ -1,18 +1,38 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: lightblue;
+}
+
+header .navbar {
+    background-color: white;
+    border-bottom: 1px solid lightblue;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* Admin-specific styles */
+.admin-card {
+    padding-bottom: 2rem;
+    height: 32rem;
+}
+
+/* Default card styles */
+.single-card {
+    width: 18rem;
+    height: 28rem;
+}
+
+/* Product description styling */
+.product-description {
+    height: 10rem;
 }

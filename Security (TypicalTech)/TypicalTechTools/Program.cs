@@ -55,16 +55,17 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.Use(async (context, next) =>
 {
-   /* context.Response.Headers.Add("Content-Security-Policy",
-        "default-src 'self'; " +
-        "img-src 'self'; " +
-        "script-src 'self'; " +
-        "style-src 'self'; " +
-        "font-src 'self'; " +
-        "connect-src 'self'; " +
-        "object-src 'none'; " +
-        "base-uri 'self'; " +
-        "frame-ancestors 'none';");*/
+    context.Response.Headers.Add("Content-Security-Policy",
+       "default-src 'self'; " +
+       "img-src 'self' data:; " + // Allow data URIs for images
+       "script-src 'self'; " +
+       "style-src 'self'; " +
+       "font-src 'self'; " +
+       "connect-src 'self' http://localhost:8831 https://localhost ws: wss:; " +
+       "object-src 'none'; " +
+       "base-uri 'self'; " +
+       "frame-ancestors 'none';");
+
     context.Response.Headers.Add("Referrer-Policy", "no-referrer");
     context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
     context.Response.Headers.Add("X-Frame-Options", "DENY");

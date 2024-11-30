@@ -122,7 +122,7 @@ namespace TypicalTechTools.Controllers
                 // Trim and sanitize the username and password before processing
                 user.UserName = Sanitizer.Sanitize(user.UserName?.Trim());
                 user.Password = Sanitizer.Sanitize(user.Password?.Trim());
-
+                user.Role = "Guest";
                 // Check if the username already exists
                 bool usernameExists = _dataAccessLayer.CheckUserNameExists(user.UserName);
                 if (usernameExists)

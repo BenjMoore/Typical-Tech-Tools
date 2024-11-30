@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\TypicalTechTools.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\wwwroot\\Download\\TypicalTools_WarrantyForm.docx",
+      "PackagePath": "staticwebassets\\Download\\TypicalTools_WarrantyForm.docx"
+    },
+    {
       "Id": "C:\\Users\\Benjamin Moore\\Github\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\wwwroot\\Uploads\\TypicalTools_WarrantyForm.docx",
       "PackagePath": "staticwebassets\\Uploads\\TypicalTools_WarrantyForm.docx"
     },

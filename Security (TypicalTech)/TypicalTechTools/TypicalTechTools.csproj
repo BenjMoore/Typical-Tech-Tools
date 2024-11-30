@@ -1,29 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<PackageSourceMapping>false</PackageSourceMapping>
+		<!-- Disable package source mapping -->
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="Views\Admin\Create.cshtml" />
-    <Content Remove="wwwroot\data\Products.csv" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Remove="Views\Admin\Create.cshtml" />
+		<Content Remove="wwwroot\data\Products.csv" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="Views\Admin\Create.cshtml" />
-    <None Include="wwwroot\data\Products.csv" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="Views\Admin\Create.cshtml" />
+		<None Include="wwwroot\data\Products.csv" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-    <PackageReference Include="CryptoNet" Version="2.4.0" />
-    <PackageReference Include="HtmlSanitizer" Version="8.1.870" />
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+		<PackageReference Include="CryptoNet" Version="2.4.0" />
+		<PackageReference Include="HtmlSanitizer" Version="8.1.870" />
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+	</ItemGroup>
 
 </Project>

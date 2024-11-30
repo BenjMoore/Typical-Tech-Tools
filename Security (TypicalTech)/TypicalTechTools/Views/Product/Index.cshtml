@@ -8,25 +8,22 @@
     <h1>Products</h1>
 </div>
 
-
-    <div class="text-right mb-3">
-        @Html.ActionLink("Add New Product", "AddProduct", "Product", new { }, new { @class = "btn btn-primary" })
-    </div>
+<div class="text-right mb-3">
+    @Html.ActionLink("Add New Product", "AddProduct", "Product", new { }, new { @class = "btn btn-primary" })
+</div>
 
 @if (TempData["AlertMessage"] != null)
 {
-    <script type="text/javascript">
-        alert('@TempData["AlertMessage"]');
-    </script>
+    <script type="text/javascript" src="site.js"></script>
 }
 
 <div class="card-container row">
     @foreach (var product in Model)
     {
-        <div class="single-card card shadow m-2 text-center @(isAdmin ? "admin-card" : "")" style="width: 18rem; @(isAdmin ? "height: 32rem;" : "height: 28rem;")">
+        <div class="single-card card shadow m-2 text-center @(isAdmin ? "admin-card" : "")">
             <h2>@product.ProductName</h2>
             <h3>$@product.ProductPrice</h3>
-            <p style="height:10rem">@product.ProductDescription</p>
+            <p class="product-description">@product.ProductDescription</p>
             <small>Product Code: @product.ProductCode</small><br />
             <small>Updated Date: @product.UpdatedDate.ToString("dd MMMM yyyy h:mm tt")</small>
             <div>
@@ -46,9 +43,3 @@
         </div>
     }
 </div>
-
-<style>
-    .admin-card {
-        padding-bottom: 2rem;
-    }
-</style>
