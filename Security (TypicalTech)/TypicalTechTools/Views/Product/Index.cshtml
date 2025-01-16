@@ -7,11 +7,11 @@
 <div class="text-center">
     <h1>Products</h1>
 </div>
-
+@if(isAdmin){
 <div class="text-right mb-3">
     @Html.ActionLink("Add New Product", "AddProduct", "Product", new { }, new { @class = "btn btn-primary" })
 </div>
-
+}
 @if (TempData["AlertMessage"] != null)
 {
     <script type="text/javascript" src="site.js"></script>
