@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lrss\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj": {}
+    "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lrss\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj": {
+    "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lrss\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
+        "projectUniqueName": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
         "projectName": "TypicalTechTools",
-        "projectPath": "C:\\Users\\lrss\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
-        "packagesPath": "C:\\Users\\lrss\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lrss\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\obj\\",
+        "projectPath": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
+        "packagesPath": "C:\\Users\\Perl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lrss\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Perl\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -42,7 +42,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
+          "auditMode": "all"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -64,7 +64,7 @@
             },
             "Microsoft.AspNetCore.Http": {
               "target": "Package",
-              "version": "[2.2.2, )"
+              "version": "[2.3.0, )"
             },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
@@ -98,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
