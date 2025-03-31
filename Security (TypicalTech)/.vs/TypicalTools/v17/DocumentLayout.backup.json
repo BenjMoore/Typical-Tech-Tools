@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|c:\\users\\perl\\documents\\github\\ictprg537\\security (typicaltech)\\typicaltechtools\\sqlconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|solutionrelative:typicaltechtools\\sqlconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|c:\\users\\perl\\documents\\github\\ictprg537\\security (typicaltech)\\typicaltechtools\\typicaltechtools.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|solutionrelative:typicaltechtools\\typicaltechtools.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
@@ -127,10 +131,6 @@
       "RelativeMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|solutionrelative:typicaltechtools\\dataaccess\\encyript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|c:\\users\\perl\\documents\\github\\ictprg537\\security (typicaltech)\\typicaltechtools\\sqlconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|solutionrelative:typicaltechtools\\sqlconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|c:\\users\\perl\\documents\\github\\ictprg537\\security (typicaltech)\\typicaltechtools\\dataaccess\\dataaccesslayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C63D10CB-9C59-48EF-9629-7F7B4C597BB6}|TypicalTechTools\\TypicalTechTools.csproj|solutionrelative:typicaltechtools\\dataaccess\\dataaccesslayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -167,37 +167,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "TypicalTechTools\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "TypicalTechTools\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAqwIUAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.121Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "TypicalTechTools.csproj",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
               "RelativeDocumentMoniker": "TypicalTechTools\\TypicalTechTools.csproj",
-              "ToolTip": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj*",
-              "RelativeToolTip": "TypicalTechTools\\TypicalTechTools.csproj*",
+              "ToolTip": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\TypicalTechTools.csproj",
+              "RelativeToolTip": "TypicalTechTools\\TypicalTechTools.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-30T05:44:40.363Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T05:44:40.363Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Views\\Admin\\Create.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Admin\\Create.cshtml",
@@ -205,12 +191,11 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Admin\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-21T06:52:31.287Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-21T06:52:31.287Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AdminLogin.cshtml",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Views\\Admin\\AdminLogin.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Admin\\AdminLogin.cshtml",
@@ -218,12 +203,11 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Admin\\AdminLogin.cshtml",
               "ViewState": "AgIAAAcAAAAAAAAAAADwvxcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T03:58:47.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.147Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Sanitizer.cs",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\DataAccess\\Sanitizer.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\DataAccess\\Sanitizer.cs",
@@ -231,12 +215,11 @@
               "RelativeToolTip": "TypicalTechTools\\DataAccess\\Sanitizer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-24T12:13:36.8Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-24T12:13:36.8Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Views\\Product\\Index.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Product\\Index.cshtml",
@@ -244,12 +227,11 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Product\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T03:58:47.111Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.111Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "CommentController.cs",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Controllers\\CommentController.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Controllers\\CommentController.cs",
@@ -257,12 +239,11 @@
               "RelativeToolTip": "TypicalTechTools\\Controllers\\CommentController.cs",
               "ViewState": "AgIAALUAAAAAAAAAAAAjwD4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.153Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.153Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Controllers\\HomeController.cs",
@@ -270,12 +251,11 @@
               "RelativeToolTip": "TypicalTechTools\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.165Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.165Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "FileModel.cs",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Models\\FileModel.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Models\\FileModel.cs",
@@ -283,12 +263,11 @@
               "RelativeToolTip": "TypicalTechTools\\Models\\FileModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-21T03:08:45.354Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-21T03:08:45.354Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "AdminUser.cs",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Models\\AdminUser.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Models\\AdminUser.cs",
@@ -296,12 +275,36 @@
               "RelativeToolTip": "TypicalTechTools\\Models\\AdminUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.128Z",
+              "WhenOpened": "2024-10-30T03:58:47.128Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SQLConnector.cs",
+              "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\SQLConnector.cs",
+              "RelativeDocumentMoniker": "TypicalTechTools\\SQLConnector.cs",
+              "ToolTip": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\SQLConnector.cs",
+              "RelativeToolTip": "TypicalTechTools\\SQLConnector.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAApwEUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T03:58:47.178Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "TypicalTechTools\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "TypicalTechTools\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAqwIUAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T03:58:47.121Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "Comment.cs",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Models\\Comment.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Models\\Comment.cs",
@@ -309,12 +312,11 @@
               "RelativeToolTip": "TypicalTechTools\\Models\\Comment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T05:13:04.284Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-01T05:13:04.284Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "TypicalTechTools\\Properties\\launchSettings.json",
@@ -322,12 +324,11 @@
               "RelativeToolTip": "TypicalTechTools\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-11-29T07:24:39.12Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-29T07:24:39.12Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Program.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Program.cs",
@@ -335,12 +336,11 @@
               "RelativeToolTip": "TypicalTechTools\\Program.cs",
               "ViewState": "AgIAACoAAAAAAAAAAIBZwEoAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.171Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.171Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Models\\Product.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Models\\Product.cs",
@@ -348,12 +348,11 @@
               "RelativeToolTip": "TypicalTechTools\\Models\\Product.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T03:21:25.212Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T03:21:25.212Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "CommentList.cshtml",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Views\\Comment\\CommentList.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Comment\\CommentList.cshtml",
@@ -361,12 +360,11 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Comment\\CommentList.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAIBZwA0AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T03:58:47.14Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.14Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\appsettings.json",
               "RelativeDocumentMoniker": "TypicalTechTools\\appsettings.json",
@@ -374,12 +372,11 @@
               "RelativeToolTip": "TypicalTechTools\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-11-29T07:24:44.747Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-29T07:24:44.747Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Models\\ErrorViewModel.cs",
@@ -387,12 +384,11 @@
               "RelativeToolTip": "TypicalTechTools\\Models\\ErrorViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T01:08:15.399Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-22T01:08:15.399Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Views\\Product\\Privacy.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Product\\Privacy.cshtml",
@@ -400,12 +396,11 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Product\\Privacy.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T03:58:47.102Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.102Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "TypicalTechTools\\wwwroot\\css\\site.css",
@@ -413,12 +408,11 @@
               "RelativeToolTip": "TypicalTechTools\\wwwroot\\css\\site.css",
               "ViewState": "AgIAAAQAAAAAAAAAAAAAwB4AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-29T05:25:13.257Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-29T05:25:13.257Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Shared\\_Layout.cshtml",
@@ -426,12 +420,11 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAA8AAAAAAAAAAIBZwDAAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T03:58:47.116Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.116Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "RemoveProduct.cshtml",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Views\\Product\\RemoveProduct.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Product\\RemoveProduct.cshtml",
@@ -439,12 +432,11 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Product\\RemoveProduct.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T03:58:47.096Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.096Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "site.js",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\wwwroot\\js\\site.js",
               "RelativeDocumentMoniker": "TypicalTechTools\\wwwroot\\js\\site.js",
@@ -452,12 +444,11 @@
               "RelativeToolTip": "TypicalTechTools\\wwwroot\\js\\site.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-11-22T01:08:33.809Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-22T01:08:33.809Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "EditComment.cshtml",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Views\\Comment\\EditComment.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Comment\\EditComment.cshtml",
@@ -465,12 +456,11 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Comment\\EditComment.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAIBZwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T03:58:47.091Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.091Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "AddProduct.cshtml",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Views\\Product\\AddProduct.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Product\\AddProduct.cshtml",
@@ -478,12 +468,11 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Product\\AddProduct.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T03:58:47.106Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.106Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "_ValidationScriptsPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
@@ -491,12 +480,11 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-13T04:16:11.22Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-13T04:16:11.22Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Error.cshtml",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Views\\Shared\\Error.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Shared\\Error.cshtml",
@@ -504,12 +492,11 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Shared\\Error.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-30T01:28:32.211Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T01:28:32.211Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Views\\Warranty\\Index.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Warranty\\Index.cshtml",
@@ -517,25 +504,11 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Warranty\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-24T09:19:33.186Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-24T09:19:33.186Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "SQLConnector.cs",
-              "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\SQLConnector.cs",
-              "RelativeDocumentMoniker": "TypicalTechTools\\SQLConnector.cs",
-              "ToolTip": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\SQLConnector.cs",
-              "RelativeToolTip": "TypicalTechTools\\SQLConnector.cs",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAcwI0AAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.178Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "WarrantyController.cs",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Controllers\\WarrantyController.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\Controllers\\WarrantyController.cs",
@@ -543,12 +516,11 @@
               "RelativeToolTip": "TypicalTechTools\\Controllers\\WarrantyController.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAwwD8AAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-21T02:44:57.719Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-21T02:44:57.719Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\Views\\Warranty\\Delete.cshtml",
               "RelativeDocumentMoniker": "TypicalTechTools\\Views\\Warranty\\Delete.cshtml",
@@ -556,12 +528,11 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Warranty\\Delete.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-24T09:52:54.365Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-24T09:52:54.365Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "Encyript.cs",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\DataAccess\\Encyript.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\DataAccess\\Encyript.cs",
@@ -569,12 +540,11 @@
               "RelativeToolTip": "TypicalTechTools\\DataAccess\\Encyript.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAiwDkAAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.086Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.086Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "FileUploaderService.cs",
               "DocumentMoniker": "C:\\Users\\Perl\\Documents\\GitHub\\ICTPRG537\\Security (TypicalTech)\\TypicalTechTools\\DataAccess\\FileUploaderService.cs",
               "RelativeDocumentMoniker": "TypicalTechTools\\DataAccess\\FileUploaderService.cs",
@@ -582,8 +552,7 @@
               "RelativeToolTip": "TypicalTechTools\\DataAccess\\FileUploaderService.cs",
               "ViewState": "AgIAAEYAAAAAAAAAAADwv2QAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-29T07:36:36.38Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-29T07:36:36.38Z"
             },
             {
               "$type": "Document",
@@ -595,8 +564,7 @@
               "RelativeToolTip": "TypicalTechTools\\DataAccess\\DataAccessLayer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAG4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.007Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.007Z"
             },
             {
               "$type": "Document",
@@ -608,8 +576,7 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-29T05:45:51.722Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-29T05:45:51.722Z"
             },
             {
               "$type": "Document",
@@ -621,8 +588,7 @@
               "RelativeToolTip": "TypicalTechTools\\Views\\Comment\\AddComment.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T03:58:47.134Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.134Z"
             },
             {
               "$type": "Document",
@@ -634,8 +600,7 @@
               "RelativeToolTip": "TypicalTechTools\\Controllers\\ProductController.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAwEwAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T03:58:47.158Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:58:47.158Z"
             },
             {
               "$type": "Document",

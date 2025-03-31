@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TypicalTechTools")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51a40be9d16c2dfbcd1a679981a46ce167d806ad")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd521b3dab925656aa7e3226ce6ca9f591071e31")]
 [assembly: System.Reflection.AssemblyProductAttribute("TypicalTechTools")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TypicalTechTools")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
